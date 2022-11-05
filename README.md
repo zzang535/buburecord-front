@@ -4,7 +4,12 @@
 ## .env
 
 ```bash
-# db
+# APP
+APP_ENVIRONMENT=dev
+APP_PORT=3000
+APP_HOST=0.0.0.0
+
+# DB
 DB_USERNAME=bird
 DB_PASSWORD=01273100
 DB_DATABASE=album

@@ -17,13 +17,13 @@ export default {
     ]
   },
 
-  // 글로벌 CSS
+  // global css
   css: [
     '~assets/scss/reset.scss',
     '~assets/scss/common.scss'
   ],
 
-  // 스타일 변수
+  // style variable
   styleResources: {
     scss: [
       '@/assets/scss/variable.scss',
@@ -31,38 +31,39 @@ export default {
     ],
   },
 
-  // 넉스트 플러그인
+  // nuxt plugin
   plugins: [
   ],
 
-  // 컴포넌트 자동 임포트
+  // component auto import
   components: true,
 
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
+  // nuxt build module
   buildModules: [
-    // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
   ],
 
-  // Modules: https://go.nuxtjs.dev/config-modules
+  // nuxt modules
   modules: [
-    // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
   ],
 
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
+  // axios setting
   axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: '/api',
   },
-
 
   serverMiddleware: [
     '~/api'
   ],
 
-  // Build Configuration: https://go.nuxtjs.dev/config-build
+  server: {
+    port: process.env.APP_PORT, // default: 3000
+    host: process.env.APP_HOST, // default: localhost,
+    timing: false
+  },
+
   build: {
   }
 }
