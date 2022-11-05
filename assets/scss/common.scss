@@ -1,0 +1,18 @@
+.com_contain {
+	border: 1px solid black;
+	width: 100%;
+	padding: 0px 16px 0px 16px;
+	margin: 0 auto;
+
+	@include fold {
+		// padding: 0px 24px;
+	}
+
+	@include desktop {
+		padding: 0px;
+	}
+
+	@include desktop_large {
+		// padding: 220px 0 145px 0;
+	}
+}
