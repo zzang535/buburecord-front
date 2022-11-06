@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" height="120" viewBox="0 0 120 120">
+  <defs>
+    <clipPath id="clip-Artboard_1">
+      <rect width="120" height="120"/>
+    </clipPath>
+  </defs>
+  <g id="Artboard_1" data-name="Artboard – 1" clip-path="url(#clip-Artboard_1)">
+    <rect width="120" height="120" fill="rgba(255,255,255,0)"/>
+    <g id="Polygon_5" data-name="Polygon 5" transform="translate(33 32)">
+      <path d="M 54.13729858398438 47.5 L 0.862702488899231 47.5 L 27.5 1.005807995796204 L 54.13729858398438 47.5 Z" stroke="none"/>
+      <path d="M 27.5 2.011623382568359 L 1.725410461425781 47 L 53.27458953857422 47 L 27.5 2.011623382568359 M 27.5 0 L 55 48 L 0 48 L 27.5 0 Z" stroke="none" fill="#000"/>
+    </g>
+  </g>
+</svg>

@@ -1,12 +1,13 @@
 <template>
   <v-app>
     <div id="header">
-        <div>
+        <div class="logo">
             <h3 @click="$router.push('/')">ALBUM.BIRD89</h3>
         </div>
-        <div>
-            <span @click="$router.push('/join')">JOIN</span> | 
-            <span @click="$router.push('/login')">LOGIN</span>
+        <div class="menu">
+            <h3 @click="$router.push('/join')">JOIN</h3>
+            <h3>|</h3>
+            <h3 @click="$router.push('/login')">LOGIN</h3>
         </div>
     </div>
     <Nuxt />
@@ -27,13 +28,27 @@ export default {
 <style lang="scss" scoped>
     #header {
         border: 1px solid black;
+        background-color: white;
         display: flex;
         justify-content: space-between;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
         position: fixed;
-        z-index: 1000;
-        background-color: white;
         width: 100%;
+        height: $header_height;
+        z-index: 1000;
+        .logo {
+          /* border: 1px solid black; */
+          padding-top: 5px;
+        }
+        .menu {
+          /* border: 1px solid black; */
+          display: flex;
+          padding-top: 5px;
+          h3 {
+            margin-right: 3px;
+            margin-left: 3px;
+          }
+        }
     }
 </style>

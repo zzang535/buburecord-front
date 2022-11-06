@@ -57,7 +57,7 @@ export default {
   
 <style lang="scss" scoped>
 #main {
-	margin-top: 30px;
+	margin-top: $header_height;
 	.image-container {
 		/* border: 2px solid red; */
 		display: flex;

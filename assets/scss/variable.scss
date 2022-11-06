@@ -1,11 +1,12 @@
-// 브레이크 포인트 관련 변수
 
-// $mobile_end: 767px;
+$header_height: 40px;
+
+
+// break point
 $mobile_m: 375px;
 $mobile_l: 414px;
 $fold: 512px;
 $tablet: 768px;
-///
 $desktop: 1024px;
 $desktop_large: 1200px;
 $desktop_max: 1600px;
@@ -16,11 +17,8 @@ $color_black: #000;
 $color_white: #fff;
 $color_main: #5AABFC;
 $color_red: #D32F2F;
-
-// color admin
 $color_admin_background: #FAFCFE;
 $color_admin_text: #4B4E51;
-
 $color_blue: #1E86FF;
 $color_black: black;
 $color_yell:#F4D01E;
@@ -29,5 +27,5 @@ $color_grey:#717A87;
 $main_color:#48DDED;
 $sub_color:#1E86FF;
 
-//border_radius
+// border_radius
 $border-radius:4px;
