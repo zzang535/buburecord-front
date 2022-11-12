@@ -1,5 +1,9 @@
 // 모델
+const sequelize = require("../../models").sequelize
 const Feed = require('../../models').feed // feed 로드
+
+const sharp = require('sharp')
+const fs = require("fs")
 
 export async function list(req, res) {
     try {
@@ -27,5 +31,18 @@ export async function item(req, res) {
         console.log(err)
         res.status(500).send({ message: '앨범 하나 조회 실패' })
         return
+    }
+}
+
+
+export async function upload_file(req, res) {
+    try {
+        console.log('file call ok')
+        console.log(req.body)
+        console.log(req.file)
+       
+        res.send('upload ok')
+    } catch (err) {
+        console.log(err)
     }
 }

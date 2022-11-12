@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 module.exports = (sequelize, DataTypes) => {
     const feed = sequelize.define('feed', {
         id : {       
@@ -9,18 +9,22 @@ module.exports = (sequelize, DataTypes) => {
         },
         date: {
             type: DataTypes.STRING,
-            allowNull: false, // required
+            allowNull: false, 
         },   
         comment: {
             type: DataTypes.STRING,
-            allowNull: false, // required
+            allowNull: false, 
         },
         image_url: {
             type: DataTypes.STRING,
-            allowNull: false, // required
-        }       
+            allowNull: false,
+        },
+        thumbnail_url: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        }        
     }, {
         tableName: 'feed', 
-    });
-    return feed;
-};
+    })
+    return feed
+}

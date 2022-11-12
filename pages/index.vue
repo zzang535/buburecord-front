@@ -14,12 +14,12 @@
 	</div>
 </template>
   
-  <script>
+<script>
 export default {
 	data() {
 		return {
 			feeds: [],
-			dynamic_height: "0px",
+			dynamic_height: 0,
 		};
 	},
 	created() {
@@ -73,6 +73,10 @@ export default {
 				object-fit: cover;
 			}
 		}
+	}
+	.canvas {
+		width: var(--canvas-width);
+		height: var(--canvas-height);
 	}
 }
 </style>
