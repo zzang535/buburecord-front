@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" height="120" viewBox="0 0 120 120">
+  <defs>
+    <clipPath id="clip-Artboard_2">
+      <rect width="120" height="120"/>
+    </clipPath>
+  </defs>
+  <g id="Artboard_2" data-name="Artboard – 2" clip-path="url(#clip-Artboard_2)">
+    <rect width="120" height="120" fill="rgba(255,255,255,0)"/>
+    <g id="Group_2" data-name="Group 2" transform="translate(2 1)">
+      <line id="Line_6" data-name="Line 6" x2="36" y2="36" transform="translate(31.75 25)" fill="none" stroke="#000" stroke-width="4"/>
+      <line id="Line_7" data-name="Line 7" x2="36" y2="36" transform="translate(52.25 24.5)" fill="none" stroke="#000" stroke-width="4"/>
+      <line id="Line_10" data-name="Line 10" x2="36" y2="36" transform="translate(67.75 58.5) rotate(90)" fill="none" stroke="#000" stroke-width="4"/>
+      <line id="Line_11" data-name="Line 11" x2="36" y2="36" transform="translate(87.25 58.5) rotate(90)" fill="none" stroke="#000" stroke-width="4"/>
+    </g>
+  </g>
+</svg>

@@ -1,13 +1,13 @@
 <template>
     <div id="album-detail">
-            <div class="left-button" @click="text_box_status=true">
-                <img src="~assets/img/arrow-left-slim.svg" alt="">
-            </div>
+        <div class="left-button" @click="text_box_status=true">
+            <img src="~assets/img/arrow-left-slim-black.svg" alt="">
+        </div>
         <div class="text-box" v-if="text_box_status">
             <div class="top">
                 <div class="date">{{ feed.date }}</div>
                 <div class="right-button" @click="text_box_status=false">
-                    <img src="~assets/img/arrow-right-slim.svg" alt="">
+                    <img src="~assets/img/arrow-right-slim-black.svg" alt="">
                 </div>
             </div>
             <div class="line"></div>
