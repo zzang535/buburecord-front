@@ -121,7 +121,7 @@ export default {
 			border: 1px solid black;
 			position: absolute;
 			right: 10px;
-			bottom: 10px;
+			top: 50px;
 			width: 45px;
 			height: 45px;
 			background-color: white;
