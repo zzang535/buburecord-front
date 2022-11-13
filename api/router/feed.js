@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const free = require('../controller/album')
+const feed = require('../controller/feed')
 
+router.get('/list', feed.list)
 
 module.exports = router

@@ -36,7 +36,7 @@ app.all('/*', function (req, res, next) {
 
 app.use('/free', require('./router/free.js'))
 app.use(require("./middleware/token.js").token)
-app.use('/album', require('./router/album.js')) 
+app.use('/feed', require('./router/feed.js')) 
 
 
 module.exports = {

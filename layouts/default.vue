@@ -5,9 +5,10 @@
             <h3 @click="$router.push('/')">ALBUM.BIRD89</h3>
         </div>
         <div class="menu">
-            <h3 @click="$router.push('/join')">JOIN</h3>
-            <h3>|</h3>
-            <h3 @click="$router.push('/login')">LOGIN</h3>
+            <h3 v-if="$store.state.is_login" @click="logout()">LOGOUT</h3>
+            <h3 v-if="!$store.state.is_login" @click="$router.push('/join')">JOIN</h3>
+            <h3 v-if="!$store.state.is_login">|</h3>
+            <h3 v-if="!$store.state.is_login" @click="$router.push('/login')">LOGIN</h3>
         </div>
     </div>
     <Nuxt />
@@ -16,12 +17,23 @@
 
 <script>
 export default {
-  name: 'DefaultLayout',
-  data () {
-    return {
-
+    name: 'DefaultLayout',
+    data () {
+        return {
+            
+        }
+    },
+    methods: {
+        async logout() {
+            try {
+                await this.$axios.get(`/free/logout`)
+                this.$store.commit('logout')
+                this.$router.push('/')
+            } catch(error) {
+                console.log(error)
+            }
+        },
     }
-  }
 }
 </script>
 

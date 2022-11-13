@@ -26,8 +26,11 @@ const upload = multer({
     })
 })
 
-router.get('/list', free.list)
+
 router.get('/item/:id', free.item)
 router.post('/upload_file', upload.single('file'), free.upload_file)
+router.post('/login', free.login)
+router.post('/join', free.join)
+router.get('/logout', free.logout)
 
 module.exports = router

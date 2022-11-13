@@ -18,13 +18,14 @@ module.exports = (sequelize, DataTypes) => {
         image_url: {
             type: DataTypes.STRING,
             allowNull: false,
-        },
-        thumbnail_url: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        }        
+        }
     }, {
         tableName: 'feed', 
     })
+    feed.associate = function(models){
+        feed.belongsTo(models.user, { 
+            foreignKey: 'user_id',
+        })
+    }
     return feed
 }

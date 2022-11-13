@@ -1,31 +1,25 @@
 export const strict = false
 
-
-// initialized userData
 const USER_DATA = () => {
     return {
-        idx: null,
-        role: null,
-        user_id: '',
+        id: null,
+        username: ''
     }
 } 
 
 export const state = () => ({
     is_login: false,
     user: {
-        idx: null,
-        role: null,
-        user_id: ''
+        id: null,
+        username: ''
     }
 })
 
 export const mutations = {
-    // *** USER ***
     login(state, payload) {
         const user_data = payload
-        state.user.role = user_data.role
-        state.user.idx = user_data.idx
-        state.user.user_id = user_data.user_id
+        state.user.id = user_data.id
+        state.user.username = user_data.username
         state.is_login = true
     },
     logout(state){

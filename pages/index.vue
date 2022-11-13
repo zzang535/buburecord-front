@@ -1,6 +1,15 @@
 <template>
 	<div id="main">
-		<div class="image-container">
+		<div class="com_contain" v-if="!$store.state.is_login">
+            <div class="login_box">
+
+                <div class="logo">
+                	<h1>ALBUM.BIRD89</h1>
+                </div>
+            </div>
+
+        </div>
+		<div class="image-container" v-if="$store.state.is_login">
 			<div
 				class="image-box"
 				v-for="(feed, index) in feeds"
@@ -25,7 +34,9 @@ export default {
 	created() {
 		window.addEventListener("resize", this.handle_resize)
 		this.init()
-		this.get_feeds_and_pick()
+		if(this.$store.state.is_login) {
+			this.get_feeds_and_pick()
+		}
 	},
 	beforeDestroy() {
 		window.removeEventListener("resize", this.handle_resize)
@@ -45,7 +56,7 @@ export default {
 		async get_feeds_and_pick() {
 			try {
 				console.log("list call")
-				const response = await this.$axios.get("/free/list")
+				const response = await this.$axios.get("/feed/list")
 				this.feeds = response.data.data
 			} catch (err) {
 				console.log(err)
@@ -58,6 +69,22 @@ export default {
 <style lang="scss" scoped>
 #main {
 	margin-top: $header_height;
+	.com_contain{
+        max-width: 600px;
+        height: calc(100vh - 40px); // 헤더 제외
+        display: flex;
+        align-items: center;
+        .login_box{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            .logo{
+                text-align: center;
+                margin-bottom: 10px;
+            }
+		}
+	}
+
 	.image-container {
 		/* border: 2px solid red; */
 		display: flex;

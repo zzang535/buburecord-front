@@ -33,6 +33,8 @@ export default {
 
   // nuxt plugin
   plugins: [
+    { src: '~/plugins/axios.js' },
+    { src: '~/plugins/vuex-persist' },
   ],
 
   // component auto import
