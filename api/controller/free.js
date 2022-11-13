@@ -13,12 +13,10 @@ export async function item(req, res) {
     try {
         const find_feed = await Feed.findByPk(id)
         const data = find_feed
-        res.status(200).send({ message: '앨범 하나 조회 성공', data })
-        return
+        return res.status(200).send({ message: '앨범 하나 조회 성공', data })
     } catch (err) {
         console.log(err)
-        res.status(500).send({ message: '앨범 하나 조회 실패' })
-        return
+        return res.status(500).send({ message: '앨범 하나 조회 실패' })
     }
 }
 
@@ -59,7 +57,6 @@ export const login = async (req, res) => {
         res.cookie('refresh_token', refresh_token, { path: '/', httpOnly: true, sameSite: 'strict'})
 
         const data = user_data
-        console.log(data)
         return res.status(200).send({ code: 200, message: 'login_success', data })
 
     } catch (error) {
@@ -85,14 +82,11 @@ export const join = async (req, res) => {
 
         const access_token = jwt.create_access(user_data)
         const refresh_token = jwt.create_refresh(user_data)
-
-        // 쿠키에 토큰 적재
+s
         res.cookie('access_token', access_token, { path: '/', httpOnly: true, sameSite: 'strict'})
         res.cookie('refresh_token', refresh_token, { path: '/', httpOnly: true, sameSite: 'strict'})
 
         const data = user_data
-        console.log(data)
-
         return res.status(200).send({ code: 200, message: 'join_success', data })
 
     } catch (error) {
@@ -106,10 +100,8 @@ export const logout = async (req, res) => {
     try {
         res.clearCookie('access_token')
         res.clearCookie('refresh_token')
-        res.status(200).send({ message: 'logout_success'})
-        return
+        return res.status(200).send({ message: 'logout_success'})
     } catch(err) {
-        res.status(500).send({ message: 'logout_server_error'})
-        return
+        return res.status(500).send({ message: 'logout_server_error'})
     }
   }
