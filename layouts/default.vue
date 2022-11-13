@@ -20,7 +20,7 @@ export default {
     name: 'DefaultLayout',
     data () {
         return {
-            
+
         }
     },
     methods: {
@@ -52,12 +52,14 @@ export default {
         .logo {
           /* border: 1px solid black; */
           padding-top: 5px;
+          cursor: pointer;
         }
         .menu {
           /* border: 1px solid black; */
           display: flex;
           padding-top: 5px;
           h3 {
+            cursor: pointer;
             margin-right: 3px;
             margin-left: 3px;
           }

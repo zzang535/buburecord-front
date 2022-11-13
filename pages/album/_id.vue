@@ -1,5 +1,20 @@
 <template>
     <div id="album-detail">
+            <div class="left-button" @click="text_box_status=true">
+                <img src="~assets/img/arrow-left-slim.svg" alt="">
+            </div>
+        <div class="text-box" v-if="text_box_status">
+            <div class="top">
+                <div class="date">{{ feed.date }}</div>
+                <div class="right-button" @click="text_box_status=false">
+                    <img src="~assets/img/arrow-right-slim.svg" alt="">
+                </div>
+            </div>
+            <div class="line"></div>
+            <div class="bottom">
+                <div>{{ feed.comment }}</div>
+            </div>
+        </div>
         <div class="screen-box">
             <img 
                 :src="feed.image_url" 
@@ -9,16 +24,6 @@
                 }"
             />
             
-        </div>
-        <div class="text-box">
-            <div class="left">
-                <div>{{ feed.date }}</div>
-                <div>|</div>
-                <div>{{ feed.comment }}</div>
-            </div>
-            <div class="right">
-                <img src="~assets/img/arrow-black.svg" alt="">
-            </div>
         </div>
     </div>
 </template>
@@ -35,6 +40,7 @@ export default {
             image_width: null,
             image_height: null,
             image_ratio: null,
+            text_box_status: false,
         }
     },
     created(){
@@ -80,14 +86,14 @@ export default {
 </script>
 <style lang="scss" scoped>
 #album-detail {
-    /* position: relative; */
+    position: relative;
     .screen-box {
         background-color: black;
         margin-top: $header_height; // 헤더 영역
         width: 100vw;
-        height: calc(100vh - 80px); // 헤더, 하단바 제외
+        height: calc(100vh - 40px); // 헤더, 하단바 제외
         text-align: center;
-        line-height: calc(100vh - 80px); // 세로 중앙정렬
+        line-height: calc(100vh - 40px); // 세로 중앙정렬
         img {
             border: 1px solid black;
             vertical-align: middle; // 세로 중앙정렬
@@ -95,32 +101,53 @@ export default {
         }
       
     }
+    .left-button {
+        cursor: pointer;
+        border: 1px solid black;
+        position: absolute;
+        right: 0;
+        top: 40px;
+        background-color: white;
+        width: 40px;
+        height: 40px;
+        img {
+            width: 100%;
+        }
+    }
 
     .text-box {
         border: 1px solid black;
         position: absolute;
         right: 0;
-        bottom: 0;
+        top: 40px;
         background-color: white;
         width: 100%;
-        height: 40px;
-        display: flex;
-        justify-content: space-between;
+        /* height: 40px; */
         padding-left: 10px;
-        .left {
+        padding-right: 10px;
+        .top {
             display: flex;
             justify-content: space-between;
-            padding-top: 8px;
-            div {
-                margin-right: 3px;
-                margin-left: 3px;
+            .date {
+                line-height: 40px;
             }
+            .right-button {
+                cursor: pointer;
+                width: 40px;
+                height: 40px;
+                img {
+                    height: 100%;
+                }
+            }
+            
         }
-        .right {
+        .line {
+            border-bottom: 1px solid black;
+        }
+        .bottom {
             /* border: 1px solid black; */
-            img {
-                height: 100%;
-            }
+            height: 40px;
+            line-height: 40px;
         }
     }
    
