@@ -69,7 +69,7 @@
         max-width: 600px;
         height: calc(100vh - 40px); // 헤더 제외
         display: flex;
-        align-items:center;
+        align-items: center;
         .login_box{
             display: flex;
             flex-direction: column;

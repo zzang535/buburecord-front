@@ -12,6 +12,7 @@
         </div>
     </div>
     <Nuxt />
+    <CommonModal :modal="modal" @close="modal.state = false" />
   </v-app>
 </template>
 
@@ -20,8 +21,22 @@ export default {
     name: 'DefaultLayout',
     data () {
         return {
-
+            modal: {
+                title: '',
+                state: false,
+                type: 'single',
+                func: () => {},
+                alert_text: ''
+            },    
         }
+    },
+    created() {
+        this.$nuxt.$on("popup", this.handleAlert)
+		this.$nuxt.$on("popup:close", this.handleAlertClose)
+    },
+    beforeDestroy() {
+		this.$nuxt.$off("popup", this.handleAlert)
+		this.$nuxt.$off("popup:close", this.handleAlertClose)
     },
     methods: {
         async logout() {
@@ -32,6 +47,12 @@ export default {
             } catch(error) {
                 console.log(error)
             }
+        },
+        handleAlert(props){
+            this.modal = props
+        },
+        handleAlertClose(){
+            this.modal.state = false
         },
     }
 }

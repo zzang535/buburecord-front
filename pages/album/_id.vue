@@ -46,7 +46,6 @@ export default {
     created(){
         window.addEventListener("resize", this.handle_resize)
         this.init()
-        this.get_item()
     },
     beforeDestroy() {
 		window.removeEventListener("resize", this.handle_resize)

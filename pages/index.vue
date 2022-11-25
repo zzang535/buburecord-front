@@ -19,10 +19,26 @@
 			</div>
 		</div>
 		<div class="wrapper">
-			<div class="upload-button" @click="on_upload">
-				<img src="~assets/img/plus-slim-black.svg" alt="">
+			<div class="upload-button">
+				<label for="input-file">
+					<img src="~assets/img/plus-slim-black.svg" alt="">
+				</label>
+				<input 
+					id="input-file" 
+					type="file" 
+					style="display: none;"
+					accept=".png, .gif, .jpg, .jpeg"
+					@change="upload_file"
+				>
 			</div>
 		</div>
+		<UploadModal 
+			v-if="upload_modal_status"
+			:file="file"
+			:url="url"
+			@close="upload_modal_status = false"
+			@complete="complete"
+		/>
 	</div>
 </template>
   
@@ -32,6 +48,9 @@ export default {
 		return {
 			feeds: [],
 			dynamic_height: 0,
+			upload_modal_status: false,
+			file: null,
+			url: null
 		};
 	},
 	created() {
@@ -50,6 +69,15 @@ export default {
 		},
 	},
 	methods: {
+		complete() {
+			this.upload_modal_status = false
+			this.get_feeds_and_pick()
+		},
+		upload_file(e) {
+			this.file = e.target.files[0]
+			this.url = URL.createObjectURL(e.target.files[0])
+			this.upload_modal_status = true
+		},
 		init() {
 			this.dynamic_height = window.innerWidth / 4 // 동적 height 데이터 설정
 		},
@@ -67,7 +95,12 @@ export default {
 		},
 		on_upload() {
 			console.log('upload click')
-		}
+		},
+
+		// module
+		common_modal(title, type = 'alert', func = null){
+            this.$nuxt.$emit('popup', { state: true, title, type, func })
+		},
 	},
 }
 </script>
@@ -117,6 +150,8 @@ export default {
 		position: fixed;
 		top: 0;
 		pointer-events: none; 
+		display: flex;
+        align-items: center;
 		.upload-button {
 			border: 1px solid black;
 			position: absolute;
@@ -131,6 +166,16 @@ export default {
 				width: 100%;
 				height: 100%;
 			}
+		}
+		.upload-modal {
+			border: 1px solid black;
+			position: absolute;
+			background-color: white;
+			right: 50%;
+			top: 50%;
+			height: calc(100vh - 40px);
+			width: calc(100vw - 20px);
+			transform: translate(50%, -50%)
 		}
 	}
 }
