@@ -18,7 +18,7 @@
 				<img :src="feed.image_url" />
 			</div>
 		</div>
-		<div class="wrapper">
+		<div class="wrapper" v-if="$store.state.is_login">
 			<div class="upload-button">
 				<label for="input-file">
 					<img src="~assets/img/plus-slim-black.svg" alt="">
