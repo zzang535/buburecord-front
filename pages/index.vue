@@ -48,7 +48,7 @@ export default {
 		return {
 			feeds: [],
 			dynamic_height: 0,
-			upload_modal_status: true,
+			upload_modal_status: false,
 			file: null,
 			url: null,
 			cloudFrontUrl: process.env.CLOUD_FRONT_URL
