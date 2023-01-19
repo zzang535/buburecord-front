@@ -48,7 +48,7 @@ export default {
 		return {
 			feeds: [],
 			dynamic_height: 0,
-			upload_modal_status: false,
+			upload_modal_status: true,
 			file: null,
 			url: null
 		};

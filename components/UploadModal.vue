@@ -1,17 +1,19 @@
 <template>
     <div class="UploadModal">
         <div class="modal-box">
-            <div class="title">
-                <h4>UPLOAD MEMORY</h4>
+            <div class="top">
+                <div>UPLOAD MEMORY</div>
+                <div>UPLOAD MEMORY</div>
             </div>
             <div class="image">
-                <img :src="url" >
+                <img src="https://bird-s3.s3.ap-northeast-2.amazonaws.com/images/1669345745468_20221125_001518.jpg" >
+                <!-- <img :src="image" > -->
             </div>
             <div class="input">
                 <input type="date" v-model="date">
             </div>
             <div class="input">
-                <textarea v-model="comment" placeholder="type comment"></textarea>
+                <input type="text" v-model="comment" placeholder="type comment">
             </div>
             <div>
                 <button @click="$emit('close')">취소</button>
