@@ -7,9 +7,9 @@ const router = express.Router()
 const feed = require('../controller/feed')
 
 AWS.config.update({
-    accessKeyId: 'AKIAXDPSAAI3I325CJ5G',
-    secretAccessKey: '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',
-    region: 'ap-northeast-2'
+    accessKeyId: process.env.ACCESS_KEY_ID,
+    secretAccessKey: process.env.SECRET_ACCESS_KEY,
+    region: process.env.S3_REGION
 })
 
 const upload = multer({
@@ -22,7 +22,6 @@ const upload = multer({
         }
     })
 })
-
 
 router.get('/list', feed.list)
 router.post('/create', upload.single('image'), feed.create)

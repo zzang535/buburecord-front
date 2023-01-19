@@ -82,7 +82,7 @@ export const join = async (req, res) => {
 
         const access_token = jwt.create_access(user_data)
         const refresh_token = jwt.create_refresh(user_data)
-s
+
         res.cookie('access_token', access_token, { path: '/', httpOnly: true, sameSite: 'strict'})
         res.cookie('refresh_token', refresh_token, { path: '/', httpOnly: true, sameSite: 'strict'})
 

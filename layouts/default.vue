@@ -41,7 +41,7 @@ export default {
     methods: {
         async logout() {
             try {
-                await this.$axios.get(`/free/logout`)
+                await this.$axios.get(`/open/logout`)
                 this.$store.commit('logout')
                 this.$router.push('/')
             } catch(error) {

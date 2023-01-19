@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const free = require('../controller/free')
+const open = require('../controller/open')
 
 const multer = require('multer') // 파일 처리 모듈
 const multerS3 = require('multer-s3') // multer - AWS S3 연결 모듈
@@ -9,9 +9,9 @@ const AWS = require('aws-sdk') // AWS 모듈
 
 // AWS id, access key 설정
 AWS.config.update({
-    accessKeyId: 'AKIAXDPSAAI3I325CJ5G',
-    secretAccessKey: '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',
-    region: 'ap-northeast-2'
+    accessKeyId: process.env.ACCESS_KEY_ID,
+    secretAccessKey: process.env.SECRET_ACCESS_KEY,
+    region: process.env.S3_REGION
 })
 
 // S3로 파일을 업로드 하기위한 설정
@@ -27,10 +27,10 @@ const upload = multer({
 })
 
 
-router.get('/item/:id', free.item)
-router.post('/upload_file', upload.single('file'), free.upload_file)
-router.post('/login', free.login)
-router.post('/join', free.join)
-router.get('/logout', free.logout)
+router.get('/item/:id', open.item)
+router.post('/upload_file', upload.single('file'), open.upload_file)
+router.post('/login', open.login)
+router.post('/join', open.join)
+router.get('/logout', open.logout)
 
 module.exports = router

@@ -24,22 +24,22 @@ export async function list(req, res) {
 
 
 export async function create(req, res) {
+    console.log('call feed create api')
     const { id } = req.token
     try {
-        console.log('file call ok')
         console.log(req.body)
         console.log(req.file)
         const { comment, date } = req.body
-        const { location } = req.file
+        const { key } = req.file
 
         console.log(comment)
         console.log(date)
-        console.log(location)
+        console.log(key)
 
         const result = await Feed.create({ 
             comment: comment, 
             date: date,
-            image_url: location,
+            image_url: key,
             user_id: id
         })
 
