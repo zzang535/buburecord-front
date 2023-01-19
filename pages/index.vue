@@ -50,12 +50,14 @@ export default {
 			dynamic_height: 0,
 			upload_modal_status: true,
 			file: null,
-			url: null
+			url: null,
+			cloudFrontUrl: process.env.CLOUD_FRONT_URL
 		};
 	},
 	created() {
 		window.addEventListener("resize", this.handle_resize)
 		this.init()
+		console.log(this.cloudFrontUrl)
 		if(this.$store.state.is_login) {
 			this.get_feeds_and_pick()
 		}
@@ -88,7 +90,12 @@ export default {
 			try {
 				console.log("list call")
 				const response = await this.$axios.get("/feed/list")
-				this.feeds = response.data.data
+				this.feeds = response.data.data.map(feed => {
+					return {
+						...feed,
+						image_url: this.cloudFrontUrlGen(feed.image_url, 500)
+					}
+				})
 			} catch (err) {
 				console.log(err)
 			}
@@ -98,6 +105,9 @@ export default {
 		},
 
 		// module
+		cloudFrontUrlGen(image_url, width) {
+			return `${this.cloudFrontUrl}${image_url}?w=${width}`
+		},
 		common_modal(title, type = 'alert', func = null){
             this.$nuxt.$emit('popup', { state: true, title, type, func })
 		},

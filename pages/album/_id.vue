@@ -16,14 +16,7 @@
             </div>
         </div>
         <div class="screen-box">
-            <img 
-                :src="feed.image_url" 
-                :class="{ 
-                    'width-100-percent': image_ratio >= screen_ratio, // 이미지가 스크린보다 넓으면 screen width 에 맞춤
-                    'height-100-percent': image_ratio < screen_ratio // 이미지가 스크린보다 좁으면 screen height 에 맞춤
-                }"
-            />
-            
+            <img :src="feed.image_url" />
         </div>
     </div>
 </template>
@@ -34,51 +27,40 @@ export default {
     data(){
         return{
             feed: {},
-            screen_width: null,
-            screen_height: null,
-            screen_ratio: null,
-            image_width: null,
-            image_height: null,
-            image_ratio: null,
             text_box_status: false,
+            cloudFrontUrl: process.env.CLOUD_FRONT_URL
         }
     },
     created(){
-        window.addEventListener("resize", this.handle_resize)
         this.init()
     },
     beforeDestroy() {
-		window.removeEventListener("resize", this.handle_resize)
 	},
     methods: {
         async init() {
-            this.screen_width = window.innerWidth
-            this.screen_height = window.innerHeight
-            this.screen_ratio = window.innerWidth / ( window.innerHeight - 40 )
             try {
                 await this.get_item()
             } catch (err) {
                 console.log(err)
             }
-            const img = new Image()
-            img.src = this.feed.image_url
-            this.image_width = img.width
-            this.image_height = img.height
-            this.image_ratio = img.width / img.height
-		},
-		handle_resize() {
-            this.screen_width = window.innerWidth
-            this.screen_height = window.innerHeight
-            this.screen_ratio = window.innerWidth / ( window.innerHeight - 40 )
 		},
         async get_item() {
 			try {
-				const response = await this.$axios.get(`/free/item/${this.id}`)
+				const response = await this.$axios.get(`/open/item/${this.id}`)
                 console.log(response)
-				this.feed = response.data.data
+                const feed = response.data.data
+				this.feed = {
+                    ...feed,
+                    image_url: `${this.cloudFrontUrl}${feed.image_url}`
+                }
 			} catch (err) {
 				console.log(err)
 			}
+		},
+
+        // module
+		cloudFrontUrlGen(image_url, width, height) {
+			return `${this.cloudFrontUrl}${image_url}?w=${width}&h=${height}`
 		},
     }
 }
@@ -97,6 +79,8 @@ export default {
             border: 1px solid black;
             vertical-align: middle; // 세로 중앙정렬
             margin-bottom: 3px; // inline 이미지 공백 제거
+            max-width: 100%;
+            max-height: 100%;
         }
       
     }
@@ -148,13 +132,6 @@ export default {
             height: 40px;
             line-height: 40px;
         }
-    }
-   
-    .height-100-percent {
-        height: 100%;
-    }
-    .width-100-percent {
-        width: 100%;
     }
 }
 </style>

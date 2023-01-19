@@ -42,7 +42,7 @@
       async join() {
           try {
               const payload = { username : this.username, password : this.password }
-              const response = await this.$axios.post(`/free/join`, payload)
+              const response = await this.$axios.post(`/open/join`, payload)
               const user_data = response.data.data
               this.$store.commit('login', user_data)
               this.$router.push('/')

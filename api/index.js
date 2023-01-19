@@ -34,7 +34,8 @@ app.all('/*', function (req, res, next) {
   next()
 })
 
-app.use('/free', require('./router/free.js'))
+app.use('/tuning', require('./router/tuning.js'))
+app.use('/open', require('./router/open.js'))
 app.use(require("./middleware/token.js").token)
 app.use('/feed', require('./router/feed.js')) 
 

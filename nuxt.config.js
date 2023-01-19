@@ -49,6 +49,7 @@ export default {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
+    '@nuxtjs/dotenv', // 클라이언트 사이드에서 env 접근,
   ],
 
   // axios setting
