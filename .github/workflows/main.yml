@@ -1,4 +1,4 @@
-name: CI/CD Docker # workflow name2
+name: CI/CD Docker # workflow name
 
 on:
   push:
@@ -43,14 +43,14 @@ jobs:
   deploy:
     needs: build # after build process
     name: Deploy
-    runs-on: self-hosted # 이렇게 적어줘야 되더라구요
+    runs-on: [ self-hosted, Linux, x64 ] # 실행시킬 runner (EC2) 지정
     steps:
       - name: Login to ghcr
         uses: docker/login-action@v1
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GIT_TOKEN }}
+          registry: ghcr.io # github deploy solution
+          username: ${{ github.actor }} # github.actor : zzang535
+          password: ${{ secrets.GIT_TOKEN }} # secrets.GIT_TOKEN : zzang535 git token
       - name: Docker run
         run: |
           sudo docker stop ${{ env.NAME }} && sudo docker rm ${{ env.NAME }} && sudo docker rmi ${{ env.DOCKER_IMAGE }}:${{ env.VERSION }}
