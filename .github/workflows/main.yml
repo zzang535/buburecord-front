@@ -43,7 +43,7 @@ jobs:
   deploy:
     needs: build # after build process
     name: Deploy
-    runs-on: [ self-hosted, Linux, x64 ] # 실행시킬 runner (EC2) 지정
+    runs-on: [ self-hosted, label-bird ] # AWS runner ./configure에서 사용할 label명
     steps:
       - name: Login to ghcr
         uses: docker/login-action@v1
