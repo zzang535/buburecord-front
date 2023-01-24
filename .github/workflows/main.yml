@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest 
     steps: 
       - name: Check out source code
-        uses: actions/checkout@v2 # 내 repo 에서 코드 다 가져와
+        uses: actions/checkout@v2 # code copy from my repository
       - name: Set up docker buildx
         id: buildx
         uses: docker/setup-buildx-action@v1
@@ -38,7 +38,7 @@ jobs:
         with:
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags: ${{ env.DOCKER_IMAGE }}:${{ env.VERSION }}
+          tags: ${{ env.DOCKER_IMAGE }}:latest
 
   deploy:
     needs: build # after build process
@@ -53,5 +53,5 @@ jobs:
           password: ${{ secrets.GIT_TOKEN }} # secrets.GIT_TOKEN : zzang535 git token
       - name: Docker run
         run: |
-          docker stop ${{ env.NAME }} && docker rm ${{ env.NAME }} && docker rmi ${{ env.DOCKER_IMAGE }}:${{ env.VERSION }}
-          docker run -d -p 3000:3000 --name ${{ env.NAME }} --restart always ${{ env.DOCKER_IMAGE }}:${{ env.VERSION }}
+          docker stop ${{ env.NAME }} && docker rm ${{ env.NAME }} && docker rmi ${{ env.DOCKER_IMAGE }}:latest
+          docker run -d -p 3000:3000 --name ${{ env.NAME }} --restart always ${{ env.DOCKER_IMAGE }}:latest
