@@ -28,7 +28,7 @@ export default {
         return{
             feed: {},
             text_box_status: false,
-            cloudFrontUrl: process.env.CLOUD_FRONT_URL
+            cloudFrontUrl: 'https://d38e565eilzns0.cloudfront.net/'
         }
     },
     created(){

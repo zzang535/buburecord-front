@@ -51,7 +51,7 @@ export default {
 			upload_modal_status: false,
 			file: null,
 			url: null,
-			cloudFrontUrl: process.env.CLOUD_FRONT_URL
+			cloudFrontUrl: 'https://d38e565eilzns0.cloudfront.net/'
 		};
 	},
 	created() {
