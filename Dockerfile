@@ -6,14 +6,23 @@ WORKDIR /app
 ADD . /app/
 RUN echo "FOLDER CREATED"
 
-# install and build
+# install
 RUN rm yarn.lock || true
 RUN yarn
+
+# env set
+ENV DB_USERNAME bird
+ENV DB_PASSWORD 01273100
+ENV DB_DATABASE album
+ENV DB_HOST ec2-13-125-17-43.ap-northeast-2.compute.amazonaws.com
+ENV TOKEN_SECRET_KEY dev_by_bird
+RUN echo "ENV SETTED"
+
+# build
 RUN yarn build
 RUN echo "BUILD CREATED"
 
-# 모든 아이피와 3000 포트 개방
-ENV HOST 0.0.0.0
+# 가상 머신에 오픈할 포트
 EXPOSE 3000
 
 CMD [ "yarn", "start" ]
