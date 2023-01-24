@@ -1,4 +1,4 @@
-name: CI/CD Docker # workflow name
+name: CI/CD Docker # workflow name2
 
 on:
   push:
