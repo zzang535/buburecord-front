@@ -9,6 +9,7 @@ RUN echo "FOLDER CREATED"
 # install
 RUN rm yarn.lock || true
 RUN yarn
+RUN echo "INSTALL CREATED"
 
 # env set
 ENV DB_USERNAME bird
@@ -23,6 +24,7 @@ RUN yarn build
 RUN echo "BUILD CREATED"
 
 # 가상 머신에 오픈할 포트
+ENV HOST 0.0.0.0
 EXPOSE 3000
 
 CMD [ "yarn", "start" ]
