@@ -53,5 +53,5 @@ jobs:
           password: ${{ secrets.GIT_TOKEN }}
       - name: Docker run
         run: |
-          docker stop ${{ env.NAME }} && docker rm ${{ env.NAME }} && docker rmi ${{ env.DOCKER_IMAGE }}:${{ env.VERSION }}
-          docker run -d -p 3000:3000 --name ${{ env.NAME }} --restart always ${{ env.DOCKER_IMAGE }}:${{ env.VERSION }}
+          sudo docker stop ${{ env.NAME }} && sudo docker rm ${{ env.NAME }} && sudo docker rmi ${{ env.DOCKER_IMAGE }}:${{ env.VERSION }}
+          sudo docker run -d -p 3000:3000 --name ${{ env.NAME }} --restart always ${{ env.DOCKER_IMAGE }}:${{ env.VERSION }}
