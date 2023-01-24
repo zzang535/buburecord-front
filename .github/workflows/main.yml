@@ -16,6 +16,10 @@ jobs:
     steps: 
       - name: Check out source code
         uses: actions/checkout@v2 # code copy from my repository
+      - name: 'Create env file'
+        run: |
+          eche "ENV FILE COPY"
+          echo "${{ secrets.ENV_FILE }}" > .env
       - name: Set up docker buildx
         id: buildx
         uses: docker/setup-buildx-action@v1
@@ -53,5 +57,7 @@ jobs:
           password: ${{ secrets.GIT_TOKEN }} # secrets.GIT_TOKEN : zzang535 git token
       - name: Docker run
         run: |
-          docker stop ${{ env.NAME }} && docker rm ${{ env.NAME }} && docker rmi ${{ env.DOCKER_IMAGE }}:latest
+          docker stop ${{ env.NAME }}
+          docker rm ${{ env.NAME }} 
+          docker rmi ${{ env.DOCKER_IMAGE }}:latest
           docker run -d -p 3000:3000 --name ${{ env.NAME }} --restart always ${{ env.DOCKER_IMAGE }}:latest
