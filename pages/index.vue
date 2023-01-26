@@ -28,7 +28,7 @@
 					type="file" 
 					style="display: none;"
 					accept=".png, .gif, .jpg, .jpeg"
-					@change="upload_file"
+					@change="onChangeInputFile"
 				>
 			</div>
 		</div>
@@ -75,7 +75,7 @@ export default {
 			this.upload_modal_status = false
 			this.get_feeds_and_pick()
 		},
-		upload_file(e) {
+		onChangeInputFile(e) {
 			this.file = e.target.files[0]
 			this.url = URL.createObjectURL(e.target.files[0])
 			this.upload_modal_status = true
@@ -173,6 +173,7 @@ export default {
 			pointer-events: auto;
 			cursor: pointer;
 			img {
+				cursor: pointer;
 				width: 100%;
 				height: 100%;
 			}

@@ -3,11 +3,9 @@
         <div class="modal-box">
             <div class="top">
                 <div>UPLOAD MEMORY</div>
-                <div>UPLOAD MEMORY</div>
             </div>
             <div class="image">
-                <img src="https://bird-s3.s3.ap-northeast-2.amazonaws.com/images/1669345745468_20221125_001518.jpg" >
-                <!-- <img :src="image" > -->
+                <img :src="url" >
             </div>
             <div class="input">
                 <input type="date" v-model="date">
@@ -15,7 +13,7 @@
             <div class="input">
                 <input type="text" v-model="comment" placeholder="type comment">
             </div>
-            <div>
+            <div class="buttonBox">
                 <button @click="$emit('close')">취소</button>
                 <button @click="create">업로드</button>
             </div>
@@ -86,27 +84,35 @@ export default {
             border-radius: 2px;
             background: #fff;
             width: 90vw;
-            height: 90vh;
-         
+            // height: 90vh;
 
-            .title {
-                border: 1px solid black;
+            .top {
+                border: 1px solid red;
                 height: $header_height;
-                h4 {
-                    margin-right: 3px;
-                    margin-left: 3px;
-                }
+                line-height: $header_height;
+                padding-left: 10px;
             }
 
             .image {
+                border: 1px solid blue;
                 img {
-                    width: 200px;
+                    width: 100%;
+                    height: 100%;
                 }
             }
 
             .input {
                 textarea {
                     border: 1px solid black;
+                }
+            }
+
+            .buttonBox {
+                display: flex;
+	            justify-content: space-between;
+                button {
+                    border: 1px solid red;
+                    width: 50%;
                 }
             }
         }
