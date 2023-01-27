@@ -23,7 +23,7 @@
         class="common_modal_confirm" 
         @click="() => { modal.func ? modalMethod() : $emit('close') }"
       >
-        {{ modal.alert_text || '예' }}
+        {{ modal.alert_text || '확인' }}
       </div>
     </div>
     <div class="common_modal_dim" @click="$emit('close')"></div>
@@ -84,7 +84,7 @@
       width:calc(100% - 30px);
       height:45px;
       // background:#151515;
-      background: $main_color;
+      background: $color_green;
       
       color:#fff;
       line-height:45px;

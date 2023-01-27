@@ -2,19 +2,21 @@
     <div class="UploadModal">
         <div class="modal-box">
             <div class="top">
-                <div>UPLOAD MEMORY</div>
+                <div class="left">UPLOAD MEMORY</div>
+                <div class="right" @click="$emit('close')">
+                    <img src="~assets/img/close-slim-black.svg" alt="">
+                </div>
             </div>
-            <div class="image">
+            <div class="image-box">
                 <img :src="url" >
             </div>
-            <div class="input">
+            <div class="input-date">
                 <input type="date" v-model="date">
             </div>
-            <div class="input">
-                <input type="text" v-model="comment" placeholder="type comment">
+            <div class="input-text">
+                <input type="text" v-model="comment" placeholder="TYPE COMMENT">
             </div>
             <div class="buttonBox">
-                <button @click="$emit('close')">취소</button>
                 <button @click="create">업로드</button>
             </div>
         </div>
@@ -84,35 +86,67 @@ export default {
             border-radius: 2px;
             background: #fff;
             width: 90vw;
-            // height: 90vh;
+            max-width: 860px;
+            height: 90vh;
+            padding: 10px;
+            border-radius: 10px;
 
             .top {
-                border: 1px solid red;
+                /* border: 1px solid black; */
                 height: $header_height;
                 line-height: $header_height;
                 padding-left: 10px;
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 5px;
+                .left {
+                    /* border: 1px solid red; */
+                }
+                .right {
+                    /* border: 1px solid blue; */
+                    height: $header_height;
+                    cursor: pointer;
+                    img {
+                        height: 100%;
+                    }
+                }
             }
 
-            .image {
-                border: 1px solid blue;
+            .image-box {
+                border: 1px solid black;
+                border-radius: 5px;
+                height: calc(90vh - 195px);
+                background-color: black;
+                text-align: center;
+                line-height: calc(90vh - 195px); // 세로 중앙정렬
                 img {
-                    width: 100%;
-                    height: 100%;
+                    max-width: 100%;
+                    max-height: 100%;
+                    vertical-align: middle; // 세로 중앙정렬
+                    margin-bottom: 4px; // inline 이미지 공백 제거
                 }
             }
 
-            .input {
-                textarea {
-                    border: 1px solid black;
-                }
+            .input-date {
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+
+            .input-text {
+                margin-top: 10px;
+                margin-bottom: 10px;
             }
 
             .buttonBox {
                 display: flex;
 	            justify-content: space-between;
                 button {
-                    border: 1px solid red;
-                    width: 50%;
+                    border: 1px solid $color_admin_background;
+                    width: 100%;
+                    height: 44px;
+                    border-radius: 5px;
+                    background: $color_green;
+                    color: $color_white;
                 }
             }
         }
