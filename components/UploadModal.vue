@@ -2,7 +2,7 @@
     <div class="UploadModal">
         <div class="modal-box">
             <div class="top">
-                <div class="left">UPLOAD MEMORY2</div>
+                <div class="left">UPLOAD MEMORY</div>
                 <div class="right" @click="$emit('close')">
                     <img src="~assets/img/close-slim-black.svg" alt="">
                 </div>
