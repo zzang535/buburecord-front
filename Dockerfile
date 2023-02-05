@@ -1,4 +1,4 @@
-FROM node:14.17.3
+FROM node:16.15.0
 
 # env set
 ARG DB_USERNAME
