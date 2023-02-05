@@ -11,7 +11,7 @@
                 <img :src="url" >
             </div>
             <div class="input-date">
-                <input type="date" v-model="date">
+                <input type="date" v-model="date" />
             </div>
             <div class="input-text">
                 <input type="text" v-model="comment" placeholder="TYPE COMMENT">
@@ -31,7 +31,7 @@ export default {
     },
     data() {
         return {
-            date: '',
+            date: this.$moment().format('YYYY-MM-DD'),
             comment: '',
             image: ''
         }
