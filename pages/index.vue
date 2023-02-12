@@ -3,7 +3,7 @@
 		<div class="com_contain" v-if="!$store.state.is_login">
             <div class="login_box">
                 <div class="logo">
-                	<h1>ALBUM.BIRD89</h1>
+                	<h1>ALBUM.BIRD88</h1>
                 </div>
             </div>
         </div>
