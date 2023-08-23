@@ -1,8 +1,10 @@
 <template>
     <div id="main">
         <div class="title">
-            <h1>부부레코드</h1>
-            <h3>BUBU-RECORD</h3>
+            <h1>부부</h1>
+            <h1>레코드</h1>
+            <h3>BUBU-</h3>
+            <h3>RECORD</h3>
         </div>
     </div>
 </template>
@@ -26,14 +28,23 @@
     
 <style lang="scss" scoped>
 #main {
-    padding: 100px;
+    padding-top: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: black;
+    height: 100vh;
    .title {
+        width: 200px;
+        height: 200px;
         border: 10px solid black;
-        padding: 100px;
+        padding: 20px;
         font-size: 100px;
+        background-color: white;
+
+        h1 {
+            margin-bottom: 8px;
+        }
    }
 }
 </style>
