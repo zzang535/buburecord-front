@@ -40,10 +40,12 @@
   #history {
     padding-top: 40px;
     padding-bottom: 60px;
+    background-color: #eeeeee;
     .history_box {
       border: 1px solid black;
-      margin: 10px;
-      padding: 10px;
+      margin: 16px;
+      padding: 16px;
+      background-color: white;
       
     }
   }
