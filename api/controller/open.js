@@ -7,6 +7,17 @@ const fs = require("fs")
 const { create_hashed_password, make_password_hashed } = require('../util/crypto.js')
 const jwt = require('../util/jwt.js')
 
+export async function test(req, res) {
+    try {
+        const data = 'ok'
+        return res.status(200).send({ message: '테스트 성공', data })
+    } catch (err) {
+        console.log(err)
+        return res.status(500).send({ message: '테스트 실패' })
+    }
+}
+
+
 
 export async function item(req, res) {
     const { id } = req.params

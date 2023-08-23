@@ -32,5 +32,6 @@ router.post('/upload_file', upload.single('file'), open.upload_file)
 router.post('/login', open.login)
 router.post('/join', open.join)
 router.get('/logout', open.logout)
+router.get('/test', open.test)
 
 module.exports = router

@@ -35,9 +35,11 @@
     "webpack": "^4.46.0"
   },
   "devDependencies": {
+    "@nuxt/typescript-build": "^2.1.0",
     "@nuxtjs/style-resources": "^1.2.1",
     "@nuxtjs/vuetify": "^1.12.3",
     "is-blob": "^3.0.0",
-    "node-sass": "^7.0.3"
+    "node-sass": "^7.0.3",
+    "nuxt-property-decorator": "^2.9.1"
   }
 }

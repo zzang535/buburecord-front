@@ -38,6 +38,7 @@ app.use('/tuning', require('./router/tuning.js'))
 app.use('/open', require('./router/open.js'))
 app.use(require("./middleware/token.js").token)
 app.use('/feed', require('./router/feed.js')) 
+app.use('/history', require('./router/history.js')) 
 
 
 module.exports = {

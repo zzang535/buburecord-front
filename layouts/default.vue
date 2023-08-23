@@ -1,14 +1,19 @@
 <template>
   <v-app>
     <div id="header">
-        <div class="logo">
-            <h3 @click="$router.push('/')">ALBUM.BIRD89</h3>
+        <div class="hamburger">
+            <div class="inner" @click="menuLeftStatus = true"></div>
         </div>
-        <div class="menu">
-            <h3 v-if="$store.state.is_login" @click="logout()">LOGOUT</h3>
-            <h3 v-if="!$store.state.is_login" @click="$router.push('/join')">JOIN</h3>
-            <h3 v-if="!$store.state.is_login">|</h3>
-            <h3 v-if="!$store.state.is_login" @click="$router.push('/login')">LOGIN</h3>
+        <div class="logo">
+            <h3 @click="$router.push('/')">BUBU-RECORD</h3>
+        </div>
+        <div class="menu_left" v-if="menuLeftStatus">
+            <div class="close pointer" @click="menuLeftStatus = false"></div>
+            <h3 class="menu_item pointer" v-if="$store.state.is_login" @click="$router.push('/history'); menuLeftStatus = false">HISTORY</h3>
+            <h3 class="menu_item pointer" v-if="$store.state.is_login" @click="$router.push('/album'); menuLeftStatus = false">ALBUM</h3>
+            <h3 class="menu_item pointer" v-if="$store.state.is_login" @click="logout(); menuLeftStatus = false">LOGOUT</h3>
+            <h3 class="menu_item pointer" v-if="!$store.state.is_login" @click="$router.push('/join'); menuLeftStatus = false">JOIN</h3>
+            <h3 class="menu_item pointer" v-if="!$store.state.is_login" @click="$router.push('/login'); menuLeftStatus = false">LOGIN</h3>
         </div>
     </div>
     <Nuxt />
@@ -28,6 +33,7 @@ export default {
                 func: () => {},
                 alert_text: ''
             },    
+            menuLeftStatus: false,
         }
     },
     created() {
@@ -64,12 +70,27 @@ export default {
         background-color: white;
         display: flex;
         justify-content: space-between;
-        padding-left: 10px;
+        /* padding-left: 10px; */
         padding-right: 10px;
         position: fixed;
         width: 100%;
         height: $header_height;
         z-index: 1000;
+
+        .hamburger {
+            width: $header_height;
+            height: $header_height;
+            /* border: 1px solid red; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .inner {
+                /* border: 1px solid red; */
+                width: 30px;
+                height: 30px;
+                background-color: black;
+            }
+        }
         .logo {
           /* border: 1px solid black; */
           padding-top: 5px;
@@ -84,6 +105,34 @@ export default {
             margin-right: 3px;
             margin-left: 3px;
           }
+        }
+
+        .menu_left {
+            width: 200px;
+            height: 100vh;
+            border: 1px solid black;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            background-color: white;
+            padding: 6px;
+            padding-top: 40px;
+
+            .close {
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                background-color: black;
+                top: 6px;
+            }
+
+            .menu_item {
+                margin: 6px;
+            }
+
+            .pointer {
+                cursor: pointer;
+            }
         }
     }
 </style>
