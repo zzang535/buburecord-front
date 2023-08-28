@@ -164,11 +164,12 @@ export default {
     align-items: center;
     .upload-button {
       border: 1px solid black;
+      border-radius: 5px;
       position: absolute;
-      right: 10px;
-      top: 50px;
-      width: 45px;
-      height: 45px;
+      right: 40px;
+      bottom: 40px;
+      width: 60px;
+      height: 60px;
       background-color: white;
       pointer-events: auto;
       cursor: pointer;

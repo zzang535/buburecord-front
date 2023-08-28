@@ -937,6 +937,24 @@
     "@babel/helper-validator-identifier" "^7.19.1"
     to-fast-properties "^2.0.0"
 
+"@blowstack/ckeditor-nuxt@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@blowstack/ckeditor-nuxt/-/ckeditor-nuxt-0.6.0.tgz#3a8f49928db83f58cf99ae2d1eb7031894d569a1"
+  integrity sha512-IbCm6GQ0NWwZlhSL5BI2sV3cG6O0hRk17sAAMbLSB2cTJ6r+3ZAeB6AYuanQSppMIFNI/Nvssj6TLuCpinNPUA==
+  dependencies:
+    "@blowstack/ckeditor5-full-free-build" "^27.0.1"
+    "@ckeditor/ckeditor5-vue2" "^1.0.5"
+
+"@blowstack/ckeditor5-full-free-build@^27.0.1":
+  version "27.0.1"
+  resolved "https://registry.yarnpkg.com/@blowstack/ckeditor5-full-free-build/-/ckeditor5-full-free-build-27.0.1.tgz#d087cebb66abdf14cda987d0e55b7a4b6a0ed49c"
+  integrity sha512-JuzZhsFATSiH1NBtv5R/ym//uRuFHBo8DMcREzldyDF6vrxaAni8jimHHr9i9k7y3wXE4WgiRrjcZcENPNh/+g==
+
+"@ckeditor/ckeditor5-vue2@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-vue2/-/ckeditor5-vue2-1.0.5.tgz#719e7ab65f0c5d9aca91a41a7ec7cb904cbabb4c"
+  integrity sha512-snsNB/2oWfKw0drGJAmMGpTatmt//L1rQsOwkBw+1uKUuOJPKN3xwyUZVWT906VguIMXm4E9OHzquZ3bdkijiA==
+
 "@csstools/convert-colors@^1.4.0":
   version "1.4.0"
   resolved "https://registry.npmjs.org/@csstools/convert-colors/-/convert-colors-1.4.0.tgz"

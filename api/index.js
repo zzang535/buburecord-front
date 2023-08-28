@@ -11,7 +11,7 @@ sequelize.authenticate()
 
 // { force: true }
 // { alter : true }
-sequelize.sync()
+sequelize.sync({ alter : true })
 .then(() => { console.log('DB SYNC SUCCESS') })
 .catch(err => console.log('DB SYNC FAIL: ', err))
 
@@ -39,6 +39,7 @@ app.use('/open', require('./router/open.js'))
 app.use(require("./middleware/token.js").token)
 app.use('/feed', require('./router/feed.js')) 
 app.use('/history', require('./router/history.js')) 
+app.use('/note', require('./router/note.js')) 
 
 
 module.exports = {
