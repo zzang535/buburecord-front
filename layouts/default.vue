@@ -95,6 +95,8 @@ export default {
         .logo {
           /* border: 1px solid black; */
           padding-top: 5px;
+          width: 100%;
+          text-align: center;
           cursor: pointer;
         }
         .menu {

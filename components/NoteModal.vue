@@ -1,0 +1,131 @@
+<template>
+  <div id="note_modal">
+    <div class="modal_box">
+      <div class="top">
+        <div class="left">NOTE</div>
+        <div class="right" @click="$emit('close')">
+          <img src="~assets/img/close-slim-black.svg" alt="" />
+        </div>
+      </div>
+      <div class="middle">
+        <div class="note_title">
+          <div class="note_title_item">{{ note.title_korean }}</div>
+          <div class="note_title_item">{{ note.title_japanese }}</div>
+        </div>
+        <div class="note_content">
+          <div class="note_content_item" v-html="note.content_korean"></div>
+          <div class="note_content_item" v-html="note.content_japanese"></div>
+        </div>
+      </div>
+      <div class="bottom">
+        <button @click="$emit('close')">확인</button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    note: Object,
+  },
+  data() {
+    return {
+      date: this.$moment().format("YYYY-MM-DD"),
+      comment: "",
+      image: "",
+    };
+  },
+  created() {},
+  methods: {},
+};
+</script>
+
+<style lang="scss" scoped>
+#note_modal {
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000; // 모달
+
+  .modal_box {
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2000;
+    border: 1px solid black;
+    background: #fff;
+    width: 90vw;
+    max-width: 860px;
+    height: 90vh;
+    padding: 10px;
+    overflow: scroll;
+
+    .top {
+      /* border: 1px solid black; */
+      height: $header_height;
+      line-height: $header_height;
+      padding-left: 10px;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+      .left {
+        /* border: 1px solid red; */
+      }
+      .right {
+        /* border: 1px solid blue; */
+        height: $header_height;
+        cursor: pointer;
+        img {
+          height: 100%;
+        }
+      }
+    }
+
+    .middle {
+      /* border: 1px solid black; */
+      /* padding: 10px; */
+
+      .note_title {
+        border: 1px solid black;
+        padding: 10px;
+        border-radius: 10px;
+
+        .note_title_item {
+          background: #dddddd;
+        }
+      }
+
+      .note_content {
+        border: 1px solid black;
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 10px;
+
+        .note_content_item {
+          background: #dddddd;
+        }
+      }
+    }
+
+    .bottom {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      button {
+        border: 1px solid $color_admin_background;
+        width: 100%;
+        height: 44px;
+        border-radius: 5px;
+        background: $color_green;
+        color: $color_white;
+      }
+    }
+  }
+}
+</style>

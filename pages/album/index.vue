@@ -155,6 +155,7 @@ export default {
 
   .wrapper {
     /* border: 10px solid black; */
+    z-index: 2000;
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -163,13 +164,14 @@ export default {
     display: flex;
     align-items: center;
     .upload-button {
+      
       border: 1px solid black;
       border-radius: 5px;
       position: absolute;
-      right: 40px;
-      bottom: 40px;
-      width: 60px;
-      height: 60px;
+      right: 5px;
+      top: 5px;
+      width: 30px;
+      height: 30px;
       background-color: white;
       pointer-events: auto;
       cursor: pointer;
