@@ -4,7 +4,29 @@
       <div class="top">
         <div class="left">UPLOAD NOTE</div>
         <div class="right" @click="$emit('close')">
-          <img src="~assets/img/close-slim-black.svg" alt="" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            viewBox="0 0 30 30"
+          >
+            <line
+              x1="6"
+              y1="6"
+              x2="22"
+              y2="22"
+              stroke="black"
+              stroke-width="1"
+            />
+            <line
+              x1="6"
+              y1="22"
+              x2="22"
+              y2="6"
+              stroke="black"
+              stroke-width="1"
+            />
+          </svg>
         </div>
       </div>
       <div class="input-date">
@@ -165,10 +187,10 @@ export default {
       .right {
         /* border: 1px solid blue; */
         height: $header_height;
+        display: flex;
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
         cursor: pointer;
-        img {
-          height: 100%;
-        }
       }
     }
 

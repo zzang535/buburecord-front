@@ -11,7 +11,29 @@
     <div class="wrapper">
       <div class="upload-button" @click="noteUploadModalStatus = true">
         <label for="input-file">
-          <img src="~assets/img/plus-slim-black.svg" alt="" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            viewBox="0 0 30 30"
+          >
+            <line
+              x1="14"
+              y1="3"
+              x2="14"
+              y2="25"
+              stroke="black"
+              stroke-width="1"
+            />
+            <line
+              x1="3"
+              y1="14"
+              x2="25"
+              y2="14"
+              stroke="black"
+              stroke-width="1"
+            />
+          </svg>
         </label>
       </div>
     </div>
