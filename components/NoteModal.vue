@@ -44,7 +44,7 @@
         </div>
       </div>
       <div class="bottom">
-        <button @click="$emit('close')">확인</button>
+        <button @click="$emit('close')">OK</button>
       </div>
     </div>
   </div>

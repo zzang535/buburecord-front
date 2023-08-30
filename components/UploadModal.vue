@@ -39,7 +39,7 @@
         <input type="text" v-model="comment" placeholder="COMMENT" />
       </div>
       <div class="buttonBox">
-        <button @click="create">업로드</button>
+        <button @click="create">UPLOAD</button>
       </div>
     </div>
   </div>

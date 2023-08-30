@@ -45,7 +45,7 @@
         <ckeditor-nuxt v-model="contentJP" :config="editorConfig" />
       </div>
       <div class="button_box">
-        <button @click="uploadNote">업로드</button>
+        <button @click="uploadNote">UPLOAD</button>
       </div>
     </div>
   </div>

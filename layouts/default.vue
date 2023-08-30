@@ -101,21 +101,21 @@
           class="menu_item pointer"
           v-if="!$store.state.is_login"
           @click="
-            $router.push('/join');
-            menuLeftStatus = false;
-          "
-        >
-          JOIN
-        </h3>
-        <h3
-          class="menu_item pointer"
-          v-if="!$store.state.is_login"
-          @click="
             $router.push('/login');
             menuLeftStatus = false;
           "
         >
           LOGIN
+        </h3>
+        <h3
+          class="menu_item pointer"
+          v-if="!$store.state.is_login"
+          @click="
+            $router.push('/join');
+            menuLeftStatus = false;
+          "
+        >
+          JOIN
         </h3>
       </div>
     </div>
