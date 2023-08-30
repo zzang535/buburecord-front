@@ -2,19 +2,23 @@
   <div id="note_modal">
     <div class="modal_box">
       <div class="top">
-        <div class="left">NOTE</div>
+        <div class="left">NOTE - {{ note.date }}</div>
         <div class="right" @click="$emit('close')">
           <img src="~assets/img/close-slim-black.svg" alt="" />
         </div>
       </div>
       <div class="middle">
         <div class="note_title">
-          <div class="note_title_item">{{ note.title_korean }}</div>
-          <div class="note_title_item">{{ note.title_japanese }}</div>
+          <div>{{ note.title_korean }}</div>
+        </div>
+        <div class="note_title">
+          <div>{{ note.title_japanese }}</div>
         </div>
         <div class="note_content">
-          <div class="note_content_item" v-html="note.content_korean"></div>
-          <div class="note_content_item" v-html="note.content_japanese"></div>
+          <div v-html="note.content_korean"></div>
+        </div>
+        <div class="note_content">
+          <div v-html="note.content_japanese"></div>
         </div>
       </div>
       <div class="bottom">
@@ -65,6 +69,7 @@ export default {
     height: 90vh;
     padding: 10px;
     overflow: scroll;
+    background: #dddddd;
 
     .top {
       /* border: 1px solid black; */
@@ -93,12 +98,10 @@ export default {
 
       .note_title {
         border: 1px solid black;
+        margin-top: 10px;
         padding: 10px;
         border-radius: 10px;
-
-        .note_title_item {
-          background: #dddddd;
-        }
+        background: white;
       }
 
       .note_content {
@@ -106,10 +109,7 @@ export default {
         margin-top: 10px;
         padding: 10px;
         border-radius: 10px;
-
-        .note_content_item {
-          background: #dddddd;
-        }
+        background: white;
       }
     }
 

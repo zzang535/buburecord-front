@@ -2,6 +2,7 @@
   <div id="note">
     <div class="note_box" v-for="(note, index) in notes" :key="index">
       <div @click="onNote(note)">
+        <div>{{ note.date }}</div>
         <div>{{ note.title_korean }}</div>
         <div>{{ note.title_japanese }}</div>
       </div>
@@ -18,6 +19,7 @@
     <NoteUploadModal
       v-if="noteUploadModalStatus"
       @close="noteUploadModalStatus = false"
+      @complete="onNoteUploaded"
     />
 
     <NoteModal
@@ -54,6 +56,10 @@ export default {
       this.note = note;
       this.noteModalStatus = true;
     },
+    onNoteUploaded() {
+      this.noteUploadModalStatus = false;
+      this.getNoteList();
+    },
   },
 };
 </script>
@@ -70,6 +76,7 @@ export default {
     margin: 16px;
     padding: 16px;
     background-color: white;
+    cursor: pointer;
   }
 
   .wrapper {
