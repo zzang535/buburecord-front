@@ -14,7 +14,7 @@
         <input type="date" v-model="date" />
       </div>
       <div class="input-text">
-        <input type="text" v-model="comment" placeholder="TYPE COMMENT" />
+        <input type="text" v-model="comment" placeholder="COMMENT" />
       </div>
       <div class="buttonBox">
         <button @click="create">업로드</button>
@@ -84,16 +84,16 @@ export default {
 
   .modal-box {
     position: absolute;
-    top: 50%;
+    top: 50px;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 0%);
     z-index: 2000;
     border: 1px solid black;
     border-radius: 2px;
     background: #fff;
     width: 90vw;
     max-width: 860px;
-    height: 90vh;
+    height: 85vh;
     padding: 10px;
     border-radius: 10px;
 
@@ -121,10 +121,10 @@ export default {
     .image-box {
       border: 1px solid black;
       border-radius: 5px;
-      height: calc(90vh - 195px);
+      height: calc(85vh - 195px);
       background-color: black;
       text-align: center;
-      line-height: calc(90vh - 195px); // 세로 중앙정렬
+      line-height: calc(85vh - 195px); // 세로 중앙정렬
       img {
         max-width: 100%;
         max-height: 100%;

@@ -136,16 +136,16 @@ export default {
 
   .modal-box {
     position: absolute;
-    top: 50%;
+    top: 50px;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 0%);
     z-index: 2000;
     border: 1px solid black;
     border-radius: 2px;
     background: #fff;
     width: 90vw;
     max-width: 860px;
-    height: 90vh;
+    height: 85vh;
     padding: 10px;
     border-radius: 10px;
 
@@ -176,12 +176,12 @@ export default {
       border: 1px solid black;
       margin-top: 10px;
       border-radius: 5px;
-      height: calc((90vh - 260px) / 2);
+      height: calc((85vh - 260px) / 2);
       background-color: black;
       text-align: center;
 
       .ck-editor__editable {
-        height: calc((90vh - 342px) / 2);
+        height: calc((85vh - 342px) / 2);
       }
     }
 

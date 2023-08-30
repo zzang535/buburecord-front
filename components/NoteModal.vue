@@ -58,15 +58,15 @@ export default {
   .modal_box {
     border-radius: 10px;
     position: absolute;
-    top: 50%;
+    top: 50px;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 0%);
     z-index: 2000;
     border: 1px solid black;
     background: #fff;
     width: 90vw;
     max-width: 860px;
-    height: 90vh;
+    height: 85vh;
     padding: 10px;
     overflow: scroll;
     background: #dddddd;
