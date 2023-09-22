@@ -47,6 +47,7 @@ app.use(require("./middleware/token.js").token);
 app.use("/feed", require("./router/feed.js"));
 app.use("/history", require("./router/history.js"));
 app.use("/note", require("./router/note.js"));
+app.use("/health", require("./router/health.js"));
 
 module.exports = {
   path: "/api",

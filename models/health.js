@@ -1,7 +1,7 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
-  const user = sequelize.define(
-    "user",
+  const health = sequelize.define(
+    "health",
     {
       id: {
         type: DataTypes.INTEGER,
@@ -9,33 +9,27 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: true,
         allowNull: false,
       },
-      username: {
+      date: {
         type: DataTypes.STRING,
         allowNull: false,
-        comment: "아이디",
       },
-      password: {
+      title: {
         type: DataTypes.STRING,
         allowNull: false,
-        comment: "비밀번호",
       },
-      salt: {
-        type: DataTypes.STRING,
+      content: {
+        type: DataTypes.TEXT,
         allowNull: false,
-        comment: "솔트",
       },
     },
     {
-      tableName: "user",
+      tableName: "health",
     }
   );
-  user.associate = function (models) {
-    user.hasMany(models.feed, {
-      foreignKey: "user_id",
-    });
-    user.hasMany(models.health, {
+  health.associate = function (models) {
+    health.belongsTo(models.user, {
       foreignKey: "user_id",
     });
   };
-  return user;
+  return health;
 };

@@ -71,6 +71,16 @@
           class="menu_item pointer"
           v-if="$store.state.is_login"
           @click="
+            $router.push('/health');
+            menuLeftStatus = false;
+          "
+        >
+          HEALTH
+        </h3>
+        <h3
+          class="menu_item pointer"
+          v-if="$store.state.is_login"
+          @click="
             $router.push('/history');
             menuLeftStatus = false;
           "
