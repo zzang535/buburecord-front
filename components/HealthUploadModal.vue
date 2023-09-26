@@ -1,5 +1,5 @@
 <template>
-  <div class="NoteUploadModal">
+  <div id="HealthUploadModal">
     <div class="modal-box">
       <div class="top">
         <div class="left">{{ healthModalType }} HEALTH</div>
@@ -148,7 +148,7 @@ export default {
 </script>
 
 <style lang="scss">
-.NoteUploadModal {
+#HealthUploadModal {
   width: 100%;
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
@@ -196,15 +196,13 @@ export default {
     }
 
     .input_editor {
-      border: 1px solid black;
       margin-top: 10px;
       border-radius: 5px;
-      height: calc((85vh - 260px) / 2);
-      background-color: black;
+      height: calc(85vh - 200px);
       text-align: center;
 
       .ck-editor__editable {
-        height: calc((85vh - 342px) / 2);
+        height: calc(85vh - 240px);
       }
     }
 
