@@ -36,3 +36,21 @@ export async function create(req, res) {
     return res.status(500).send({ message: "create health fail" });
   }
 }
+
+export async function update(req, res) {
+  const { id, date, title, content } = req.body;
+  try {
+    const updateData = {
+      date: date,
+      title: title,
+      content: content,
+    };
+    await Health.update(updateData, {
+      where: { id },
+    });
+    return res.status(200).send({ message: "update health success" });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send({ message: "update health fail" });
+  }
+}

@@ -2,7 +2,7 @@
   <div class="NoteUploadModal">
     <div class="modal-box">
       <div class="top">
-        <div class="left">UPLOAD HEALTH</div>
+        <div class="left">{{ healthModalType }} HEALTH</div>
         <div class="right" @click="$emit('close')">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +39,7 @@
         <ckeditor-nuxt v-model="content" :config="editorConfig" />
       </div>
       <div class="button_box">
-        <button @click="uploadNote">UPLOAD</button>
+        <button @click="onClickSave">{{ healthModalType }}</button>
       </div>
     </div>
   </div>
@@ -47,6 +47,10 @@
 
 <script>
 export default {
+  props: {
+    healthModalType: String,
+    targetHealth: Object,
+  },
   components: {
     "ckeditor-nuxt": () => {
       if (process.client) {
@@ -56,6 +60,7 @@ export default {
   },
   data() {
     return {
+      id: null,
       date: this.$moment().format("YYYY-MM-DD"),
       title: "",
       content: "",
@@ -90,9 +95,16 @@ export default {
       },
     };
   },
-  created() {},
+  created() {
+    if (this.healthModalType == "UPDATE") {
+      this.id = this.targetHealth.id;
+      this.date = this.targetHealth.date;
+      this.title = this.targetHealth.title;
+      this.content = this.targetHealth.content;
+    }
+  },
   methods: {
-    async uploadNote() {
+    async onClickSave() {
       if (!this.date) {
         this.common_modal("날짜를 입력해주세요.");
         return;
@@ -106,8 +118,15 @@ export default {
         return;
       }
       try {
-        const url = "/health/create";
+        const url =
+          this.healthModalType == "CREATE"
+            ? "/health/create"
+            : this.healthModalType == "UPDATE"
+            ? "/health/update"
+            : null;
+
         const payload = {
+          id: this.id,
           date: this.date,
           title: this.title,
           content: this.content,
