@@ -54,3 +54,13 @@ export async function update(req, res) {
     return res.status(500).send({ message: "update health fail" });
   }
 }
+
+export async function uploadFile(req, res) {
+  console.log("call uploadFile");
+  try {
+    return res.status(200).send({ message: "uploadFile success" });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send({ message: "uploadFile health ail" });
+  }
+}

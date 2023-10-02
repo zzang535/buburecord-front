@@ -99,8 +99,8 @@
       v-if="healthUploadModalStatus"
       :healthModalType="healthModalType"
       :targetHealth="targetHealth"
-      @close="healthUploadModalStatus = false"
-      @complete="onNoteUploaded"
+      @close="initPage"
+      @complete="initPage"
     />
   </div>
 </template>
@@ -161,7 +161,7 @@ export default {
         }
       });
     },
-    onNoteUploaded() {
+    initPage() {
       this.healthUploadModalStatus = false;
       this.targetHealth = {};
       this.healthModalType = "CREATE";

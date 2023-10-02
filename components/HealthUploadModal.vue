@@ -67,7 +67,7 @@ export default {
 
       editorConfig: {
         simpleUpload: {
-          uploadUrl: "path_to_image_controller",
+          uploadUrl: "/api/open/upload_file2",
           headers: {
             Authorization: "optional_token",
           },
