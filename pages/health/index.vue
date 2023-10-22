@@ -43,7 +43,14 @@
             />
           </svg>
         </div>
-        <div v-html="health.content"></div>
+        <div class="note_content_item">
+          <div class="note_content_item_label">KOREAN</div>
+          <div class="note_content_item_content" v-html="health.content"></div>
+        </div>
+        <div class="note_content_item">
+          <div class="note_content_item_label">JAPANESE</div>
+          <div class="note_content_item_content" v-html="health.content2"></div>
+        </div>
       </div>
     </div>
 
@@ -122,7 +129,6 @@ export default {
   },
   methods: {
     onClickEdit(health) {
-      console.log(health);
       this.healthModalType = "UPDATE";
       this.healthUploadModalStatus = true;
       this.targetHealth = health;
@@ -191,6 +197,29 @@ export default {
       border: 1px solid black;
       padding: 16px;
       position: relative;
+      display: grid;
+
+      grid-template-columns: 1fr;
+      row-gap: 16px;
+
+      @include tablet {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 16px;
+      }
+
+      .note_content_item {
+        .note_content_item_label {
+          background-color: rgba(0, 0, 0, 0.2);
+          border-radius: 5px;
+          padding: 16px;
+          margin-bottom: 10px;
+        }
+        .note_content_item_content {
+          background-color: rgba(0, 0, 0, 0.2);
+          border-radius: 5px;
+          padding: 16px;
+        }
+      }
       .edit_button {
         border: 1px solid black;
         border-radius: 5px;

@@ -35,8 +35,21 @@
       <div class="input-text">
         <input type="text" v-model="title" placeholder="TITLE" />
       </div>
-      <div class="input_editor">
+      <div class="input_radio">
+        <label>
+          <input type="radio" name="lang" :value="1" v-model="editorStatus" />
+          KOREAN
+        </label>
+        <label>
+          <input type="radio" name="lang" :value="2" v-model="editorStatus" />
+          JAPANESE
+        </label>
+      </div>
+      <div class="input_editor" v-if="editorStatus == 1">
         <ckeditor-nuxt v-model="content" :config="editorConfig" />
+      </div>
+      <div class="input_editor" v-if="editorStatus == 2">
+        <ckeditor-nuxt v-model="content2" :config="editorConfig" />
       </div>
       <div class="button_box">
         <button @click="onClickSave">{{ healthModalType }}</button>
@@ -64,6 +77,8 @@ export default {
       date: this.$moment().format("YYYY-MM-DD"),
       title: "",
       content: "",
+      content2: "",
+      editorStatus: 1,
 
       editorConfig: {
         simpleUpload: {
@@ -101,6 +116,7 @@ export default {
       this.date = this.targetHealth.date;
       this.title = this.targetHealth.title;
       this.content = this.targetHealth.content;
+      this.content2 = this.targetHealth.content2;
     }
   },
   methods: {
@@ -111,10 +127,6 @@ export default {
       }
       if (!this.title) {
         this.common_modal("제목을 입력해주세요.");
-        return;
-      }
-      if (!this.content) {
-        this.common_modal("내용을 입력해주세요.");
         return;
       }
       try {
@@ -130,6 +142,7 @@ export default {
           date: this.date,
           title: this.title,
           content: this.content,
+          content2: this.content2,
         };
         const result = await this.$axios.post(url, payload);
         console.log(result);
@@ -198,11 +211,11 @@ export default {
     .input_editor {
       margin-top: 10px;
       border-radius: 5px;
-      height: calc(85vh - 200px);
+      height: calc(85vh - 240px);
       text-align: center;
 
       .ck-editor__editable {
-        height: calc(85vh - 240px);
+        height: calc(85vh - 280px);
       }
     }
 
@@ -214,6 +227,13 @@ export default {
     .input-text {
       margin-top: 10px;
       margin-bottom: 10px;
+    }
+
+    .input_radio {
+      label {
+        display: inline-block;
+        margin-right: 10px;
+      }
     }
 
     .button_box {

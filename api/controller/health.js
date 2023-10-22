@@ -19,7 +19,7 @@ export async function list(req, res) {
 
 export async function create(req, res) {
   const { id } = req.token;
-  const { date, title, content } = req.body;
+  const { date, title, content, content2 } = req.body;
   console.log(req.body);
   console.log(id);
   try {
@@ -27,6 +27,7 @@ export async function create(req, res) {
       date: date,
       title: title,
       content: content,
+      content2: content2,
       user_id: id,
     };
     await Health.create(createData);
@@ -38,12 +39,13 @@ export async function create(req, res) {
 }
 
 export async function update(req, res) {
-  const { id, date, title, content } = req.body;
+  const { id, date, title, content, content2 } = req.body;
   try {
     const updateData = {
       date: date,
       title: title,
       content: content,
+      content2: content2,
     };
     await Health.update(updateData, {
       where: { id },
