@@ -6,8 +6,7 @@ export const create_access = (payload) => {
   return jwt.sign(payload, secret, {
     algorithm: "HS256",
     // expiresIn: 10 // 10s test
-    // expiresIn: 60 * 24 * 60 * 60 // 2month test
-    expiresIn: 10 * 60, // 10m
+    expiresIn: "30d", // 30 days
   });
 };
 
@@ -21,7 +20,6 @@ export const create_refresh = (payload) => {
   return jwt.sign(payload, secret, {
     algorithm: "HS256",
     // expiresIn: 30 // 30s test
-    // expiresIn: 60 * 24 * 60 * 60 // 2month test
-    expiresIn: 30 * 24 * 60 * 60, // 1month
+    expiresIn: "30d", // 30 days
   });
 };
