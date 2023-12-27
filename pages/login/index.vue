@@ -40,6 +40,7 @@ export default {
       try {
         const payload = { username: this.username, password: this.password };
         const response = await this.$axios.post(`/open/login`, payload);
+        console.log(response);
         const user_data = response.data.data;
         this.$store.commit("login", user_data);
         this.$router.push("/");

@@ -17,6 +17,7 @@
     "compressorjs": "^1.1.1",
     "core-js": "^3.19.3",
     "cors": "^2.8.5",
+    "crypto": "^1.0.1",
     "express": "^4.18.2",
     "fs": "^0.0.1-security",
     "jsonwebtoken": "^8.5.1",
