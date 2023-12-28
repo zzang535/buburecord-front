@@ -13,9 +13,9 @@ YELLOW="33"
 # 스크립트 실행
 print_colored $YELLOW "Starting deployment..."
 
-# .env.local 파일에서 환경변수 가져오기
+# .env 파일에서 환경변수 가져오기 (# 주석 제외)
 if [ -f .env ]; then
-  export $(cat .env | xargs)
+  export $(grep -v '^#' .env | xargs)
 fi
 print_colored $YELLOW "Loaded the environment variables."
 
