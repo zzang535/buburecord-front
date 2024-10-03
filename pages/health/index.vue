@@ -10,39 +10,9 @@
         <div>{{ health.title }}</div>
       </div>
       <div class="note_content" v-if="health.open">
-        <div class="edit_button" @click="onClickEdit(health)">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="30"
-            height="30"
-            viewBox="0 0 30 30"
-          >
-            <line
-              x1="14"
-              y1="3"
-              x2="3"
-              y2="25"
-              stroke="black"
-              stroke-width="1"
-            />
-            <line
-              x1="24"
-              y1="3"
-              x2="13"
-              y2="25"
-              stroke="black"
-              stroke-width="1"
-            />
-            <line
-              x1="3"
-              y1="14"
-              x2="25"
-              y2="14"
-              stroke="black"
-              stroke-width="1"
-            />
-          </svg>
-        </div>
+
+        <EditButton @onClickButton="onClickEdit(health)" />
+
         <div class="note_content_item">
           <div class="note_content_item_label">KOREAN</div>
           <div class="note_content_item_content" v-html="health.content"></div>
@@ -55,51 +25,8 @@
     </div>
 
     <div class="wrapper">
-      <div class="upload-button" @click="healthUploadModalStatus = true">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="30"
-          height="30"
-          viewBox="0 0 30 30"
-        >
-          <line
-            x1="14"
-            y1="3"
-            x2="14"
-            y2="25"
-            stroke="black"
-            stroke-width="1"
-          />
-          <line
-            x1="3"
-            y1="14"
-            x2="25"
-            y2="14"
-            stroke="black"
-            stroke-width="1"
-          />
-        </svg>
-      </div>
-      <div class="open_button" @click="onClickOpen">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="30"
-          height="30"
-          viewBox="0 0 30 30"
-        >
-          <line x1="3" y1="5" x2="25" y2="5" stroke="black" stroke-width="1" />
-          <line x1="3" y1="7" x2="25" y2="7" stroke="black" stroke-width="1" />
-          <line x1="3" y1="9" x2="25" y2="9" stroke="black" stroke-width="1" />
-          <line
-            x1="3"
-            y1="11"
-            x2="25"
-            y2="11"
-            stroke="black"
-            stroke-width="1"
-          />
-        </svg>
-      </div>
+      <UploadButton @onClickButton="onClickUpload()" />
+      <ListOpenButton @onClickButton="onClickListOpen()" />
     </div>
 
     <HealthUploadModal
@@ -113,7 +40,17 @@
 </template>
 
 <script>
+
+import EditButton from '~/components/ui/EditButton.vue';
+import UploadButton from '~/components/ui/UploadButton.vue';
+import ListOpenButton from '~/components/ui/ListOpenButton.vue';
+
 export default {
+  components: {
+    EditButton,
+    UploadButton,
+    ListOpenButton
+  },
   data() {
     return {
       healthUploadModalStatus: false,
@@ -128,12 +65,15 @@ export default {
     this.getHealthList();
   },
   methods: {
+    onClickUpload() {
+      this.healthUploadModalStatus = true
+    },
     onClickEdit(health) {
       this.healthModalType = "UPDATE";
       this.healthUploadModalStatus = true;
       this.targetHealth = health;
     },
-    onClickOpen() {
+    onClickListOpen() {
       this.healths = this.healths.map((item) => {
         return {
           ...item,
@@ -189,10 +129,12 @@ export default {
     background-color: white;
     cursor: pointer;
     position: relative;
+
     .note_title {
       border: 1px solid black;
       padding: 16px;
     }
+    
     .note_content {
       border: 1px solid black;
       padding: 16px;
@@ -220,15 +162,7 @@ export default {
           padding: 16px;
         }
       }
-      .edit_button {
-        border: 1px solid black;
-        border-radius: 5px;
-        position: absolute;
-        width: 30px;
-        height: 30px;
-        right: 5px;
-        top: 5px;
-      }
+   
     }
     .open {
       background-color: black;
@@ -246,32 +180,6 @@ export default {
     pointer-events: none;
     display: flex;
     align-items: center;
-
-    .upload-button {
-      border: 1px solid black;
-      border-radius: 5px;
-      position: absolute;
-      right: 5px;
-      top: 5px;
-      width: 30px;
-      height: 30px;
-      background-color: white;
-      pointer-events: auto;
-      cursor: pointer;
-    }
-
-    .open_button {
-      border: 1px solid black;
-      border-radius: 5px;
-      position: absolute;
-      right: 40px;
-      top: 5px;
-      width: 30px;
-      height: 30px;
-      background-color: white;
-      pointer-events: auto;
-      cursor: pointer;
-    }
 
     .upload-modal {
       border: 1px solid black;
