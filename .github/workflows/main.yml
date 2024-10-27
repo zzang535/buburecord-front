@@ -1,13 +1,13 @@
 name: AWS S3 MAIN SERVER DEPLOY
 
-# Controls when the action will run.
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches: [main]
+
 jobs:
   run:
     runs-on: ubuntu-latest
+    
     env:
       BACKEND_URL: ${{ secrets.BACKEND_URL }}
     
@@ -32,9 +32,10 @@ jobs:
         with:
           args: --follow-symlinks --delete
         env:
-          bucket: ${{ secrets.AWS_S3_BUCKET }}
-          access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
           source_dir: 'dist'
 
       - name: Invalidate CloudFront cache
