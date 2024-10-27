@@ -31,7 +31,7 @@ jobs:
         uses: jakejarvis/s3-sync-action@master
         with:
           args: --follow-symlinks --delete
-          bucket: ${{ secrets.AWS_S3_BUCKET }}
+          bucket: ${{ vars.AWS_S3_BUCKET }}
           access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           source_dir: 'dist/'
