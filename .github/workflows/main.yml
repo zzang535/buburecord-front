@@ -9,16 +9,15 @@ jobs:
   run:
     runs-on: ubuntu-latest
     env:
-      AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+      # deploy env
+      AWS_S3_BUCKET: ${{ vars.AWS_S3_BUCKET }}
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_REGION: 'ap-northeast-2' 
-      CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
+      AWS_REGION: ${{ vars.AWS_REGION }}
+      CLOUDFRONT_DISTRIBUTION_ID: ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}
       SOURCE_DIR: 'dist'
-      APP_ENVIRONMENT: dev
-      APP_PORT: 3000
-      APP_HOST: 0.0.0.0
-      BACKEND_URL: https://buburecord-api.bird89.com
+      # app env
+      BACKEND_URL: ${{ vars.BACKEND_URL }}
     
     steps:
       - name: Checkout
