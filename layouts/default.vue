@@ -29,7 +29,7 @@
         </div>
       </div>
       <div class="logo">
-        <span @click="$router.push('/')">BUBU-RECORD v1.1</span>
+        <span @click="$router.push('/')">BUBU-RECORD v1.2</span>
       </div>
       <div class="menu_left" v-if="menuLeftStatus">
         <div class="close pointer" @click="menuLeftStatus = false">
