@@ -18,7 +18,7 @@ jobs:
       APP_ENVIRONMENT: dev
       APP_PORT: 3000
       APP_HOST: 0.0.0.0
-      BACKEND_URL: http://buburecord-api.bird89.com
+      BACKEND_URL: https://buburecord-api.bird89.com
     
     steps:
       - name: Checkout
