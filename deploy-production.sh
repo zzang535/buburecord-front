@@ -24,7 +24,7 @@ rm -rf ./dist
 print_colored $YELLOW "Deleted the old static directory."
 
 # 프로젝트 빌드 및 내보내기
-yarn build
+npm run build
 print_colored $YELLOW "Built the project."
 
 # 이전 AWS용 디렉토리 삭제
