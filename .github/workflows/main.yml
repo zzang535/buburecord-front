@@ -35,7 +35,7 @@ jobs:
 
       - name: S3 sync
         run: |
-          aws s3 sync --include "*" --acl public-read --follow-symlinks --delete ./dist s3://${{ secrets.AWS_S3_BUCKET }} --profile bird2
+          aws s3 sync --include "*" --acl public-read --follow-symlinks --delete ./dist s3://${{ secrets.AWS_S3_BUCKET }}
         shell: bash
 
       - name: Invalidate CloudFront cache
