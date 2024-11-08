@@ -13,19 +13,24 @@
       };
     },
     created() {
-        console.log(`https://accounts.google.com/o/oauth2/v2/auth?
-                client_id=${this.clientId}
-                &redirect_uri=${this.redirectUri}
-                &response_type=code
-                &scope=email profile`);
+        const url = this.getUrl();
+        console.log('url', url);
     },
     methods: {
+
+        getUrl() {
+            const params = new URLSearchParams({
+                client_id: this.clientId,
+                redirect_uri: this.redirectUri,
+                response_type: 'code',
+                scope: 'email profile',
+            });
+            const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`;
+            return authUrl;
+        },  
+
         handleLogin() {
-            const url = `https://accounts.google.com/o/oauth2/v2/auth?
-                client_id=${this.clientId}
-                &redirect_uri=${this.redirectUri}
-                &response_type=code
-                &scope=email profile`;
+            const url = this.getUrl();
             console.log('url', url);
             window.location.href = url;
         }
