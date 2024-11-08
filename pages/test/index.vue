@@ -1,0 +1,43 @@
+<template>
+    <div class="top">
+        <button @click="handleLogin">로그인</button>
+    </div>
+</template>
+  
+  <script>
+  export default {
+    data() {
+      return {
+        clientId: "919437480894-9hqmpdjm8tcmmm75asp4q17jih9pr0i5.apps.googleusercontent.com",
+        redirectUri: "https://buburecord.bird89.com",
+      };
+    },
+    created() {
+        console.log(`https://accounts.google.com/o/oauth2/v2/auth?
+                client_id=${this.clientId}
+                &redirect_uri=${this.redirectUri}
+                &response_type=code
+                &scope=email profile`);
+    },
+    methods: {
+        handleLogin() {
+            const url = `https://accounts.google.com/o/oauth2/v2/auth?
+                client_id=${this.clientId}
+                &redirect_uri=${this.redirectUri}
+                &response_type=code
+                &scope=email profile`;
+            console.log('url', url);
+            window.location.href = url;
+        }
+    },
+  };
+  </script>
+
+  <style>
+  .top {
+    margin-top: 100px;
+    height: 100px;
+    width: 1000px;
+    border: 1px solid red;
+  }
+</style>
