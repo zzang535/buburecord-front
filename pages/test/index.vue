@@ -9,6 +9,7 @@
     data() {
       return {
         clientId: process.env.GCP_OAUTH_CLIENT_ID,
+        redirectUri: `${process.env.FRONTEND_URL}/test/`
       };
     },
     created() {
@@ -20,7 +21,7 @@
         getUrl() {
             const params = new URLSearchParams({
                 client_id: this.clientId,
-                redirect_uri: "https://buburecord.bird89.com/test",
+                redirect_uri: this.redirectUri,
                 response_type: 'code',
                 scope: 'email profile',
             });

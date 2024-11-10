@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     
     env:
+      FRONTEND_URL: ${{ secrets.FRONTEND_URL }}
       BACKEND_URL: ${{ secrets.BACKEND_URL }}
       GCP_OAUTH_CLIENT_ID: ${{ secrets.GCP_OAUTH_CLIENT_ID }}
     
