@@ -9,7 +9,6 @@
     data() {
       return {
         clientId: "919437480894-9hqmpdjm8tcmmm75asp4q17jih9pr0i5.apps.googleusercontent.com",
-        redirectUri: "https://buburecord.bird89.com/test/",
       };
     },
     created() {
@@ -21,7 +20,7 @@
         getUrl() {
             const params = new URLSearchParams({
                 client_id: this.clientId,
-                redirect_uri: this.redirectUri,
+                redirect_uri: "https://buburecord.bird89.com/test",
                 response_type: 'code',
                 scope: 'email profile',
             });
