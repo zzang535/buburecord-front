@@ -3,6 +3,7 @@
         <button @click="handleLogin">로그인</button>
     </div>
 </template>
+
   
   <script>
   export default {
@@ -24,7 +25,7 @@
                 redirect_uri: this.redirectUri,
                 response_type: 'code',
                 scope: 'email profile',
-                
+
             });
             const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`;
             return authUrl;
