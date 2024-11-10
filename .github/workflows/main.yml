@@ -10,6 +10,7 @@ jobs:
     
     env:
       BACKEND_URL: ${{ secrets.BACKEND_URL }}
+      GCP_OAUTH_CLIENT_ID: ${{ secrets.GCP_OAUTH_CLIENT_ID }}
     
     steps:
       - name: Checkout

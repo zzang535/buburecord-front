@@ -8,7 +8,7 @@
   export default {
     data() {
       return {
-        clientId: "919437480894-9hqmpdjm8tcmmm75asp4q17jih9pr0i5.apps.googleusercontent.com",
+        clientId: process.env.GCP_OAUTH_CLIENT_ID,
       };
     },
     created() {
