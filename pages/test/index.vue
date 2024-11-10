@@ -9,8 +9,8 @@
   export default {
     data() {
       return {
-        clientId: process.env.GCP_OAUTH_CLIENT_ID,
-        redirectUri: `${process.env.FRONTEND_URL}/test/`
+        clientId: process.env.VUE_APP_GCP_OAUTH_CLIENT_ID,
+        redirectUri: `${process.env.VUE_APP_SERVICE_URL}/test/`
       };
     },
     created() {
