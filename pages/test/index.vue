@@ -8,8 +8,8 @@
   export default {
     data() {
       return {
-        clientId: this.$config.VUE_APP_GCP_OAUTH_CLIENT_ID,
-        redirectUri: `${this.$config.VUE_APP_SERVICE_URL}/test/`
+        clientId: this.$config.GCP_OAUTH_CLIENT_ID,
+        redirectUri: `${this.$config.SERVICE_URL}/test/`
       };
     },
     created() {

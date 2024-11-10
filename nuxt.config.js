@@ -42,13 +42,13 @@ export default {
 
 
   publicRuntimeConfig: {
-    VUE_APP_GCP_OAUTH_CLIENT_ID: process.env.VUE_APP_GCP_OAUTH_CLIENT_ID,
-    VUE_APP_SERVICE_URL: process.env.VUE_APP_SERVICE_URL,
+    GCP_OAUTH_CLIENT_ID: process.env.GCP_OAUTH_CLIENT_ID,
+    SERVICE_URL: process.env.SERVICE_URL,
   },
 
   // axios setting
   axios: {
-    baseURL: process.env.BACKEND_URL,
+    baseURL: process.env.API_URL,
   },
 
   // serverMiddleware: [

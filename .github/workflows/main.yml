@@ -9,16 +9,20 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      VUE_APP_GCP_OAUTH_CLIENT_ID: ${{ secrets.VUE_APP_GCP_OAUTH_CLIENT_ID }}
-      VUE_APP_SERVICE_URL: ${{ secrets.VUE_APP_SERVICE_URL }}
-      BACKEND_URL: ${{ secrets.BACKEND_URL }}
-      TEST: ${{ vars.TEST }}
-
+      GCP_OAUTH_CLIENT_ID: ${{ vars.GCP_OAUTH_CLIENT_ID }}
+      SERVICE_URL: ${{ vars.SERVICE_URL }}
+      API_URL: ${{ vars.API_URL }}
     steps:
       - name: Print environment variables
         run: |
-          echo "TEST: $TEST"
-          echo TEST2: ${{ vars.TEST }}
+          echo GCP_OAUTH_CLIENT_ID: ${{ vars.GCP_OAUTH_CLIENT_ID }}
+          echo SERVICE_URL: ${{ vars.SERVICE_URL }}
+          echo API_URL: ${{ vars.API_URL }}
+          echo AWS_ACCESS_KEY_ID: ${{ vars.AWS_ACCESS_KEY_ID }}
+          echo AWS_SECRET_ACCESS_KEY: ${{ vars.AWS_SECRET_ACCESS_KEY }}
+          echo AWS_REGION: ${{ vars.AWS_REGION }}
+          echo AWS_S3_BUCKET: ${{ vars.AWS_S3_BUCKET }}
+          echo CLOUDFRONT_DISTRIBUTION_ID: ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}
           
       - name: Checkout
         uses: actions/checkout@v3
@@ -37,16 +41,16 @@ jobs:
 
       - name: AWS CLI set
         run: |
-          aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws configure set default.region ${{ secrets.AWS_REGION }}
+          aws configure set aws_access_key_id ${{ vars.AWS_ACCESS_KEY_ID }}
+          aws configure set aws_secret_access_key ${{ vars.AWS_SECRET_ACCESS_KEY }}
+          aws configure set default.region ${{ vars.AWS_REGION }}
 
       - name: S3 sync
         run: |
-          aws s3 sync --include "*" --acl public-read --follow-symlinks --delete ./dist s3://${{ secrets.AWS_S3_BUCKET }}
+          aws s3 sync --include "*" --acl public-read --follow-symlinks --delete ./dist s3://${{ vars.AWS_S3_BUCKET }}
         shell: bash
 
       - name: Invalidate CloudFront cache
         run: |
-          aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
+          aws cloudfront create-invalidation --distribution-id ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
         shell: bash
