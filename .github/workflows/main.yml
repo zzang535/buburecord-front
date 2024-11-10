@@ -16,9 +16,7 @@ jobs:
     steps:
       - name: Print environment variables
         run: |
-          echo "VUE_APP_GCP_OAUTH_CLIENT_ID: $VUE_APP_GCP_OAUTH_CLIENT_ID"
-          echo "VUE_APP_SERVICE_URL: $VUE_APP_SERVICE_URL"
-          echo "BACKEND_URL: $BACKEND_URL"
+          echo "TEST: $TEST"
           
       - name: Checkout
         uses: actions/checkout@v3
