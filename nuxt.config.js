@@ -36,9 +36,15 @@ export default {
   modules: [
     "@nuxtjs/axios",
     "@nuxtjs/style-resources",
-    "@nuxtjs/dotenv", // 클라이언트 사이드에서 env 접근,
+    // "@nuxtjs/dotenv", // 클라이언트 사이드에서 env 접근,
     "@nuxtjs/moment",
   ],
+
+
+  publicRuntimeConfig: {
+    VUE_APP_GCP_OAUTH_CLIENT_ID: process.env.VUE_APP_GCP_OAUTH_CLIENT_ID,
+    VUE_APP_SERVICE_URL: process.env.VUE_APP_SERVICE_URL,
+  },
 
   // axios setting
   axios: {

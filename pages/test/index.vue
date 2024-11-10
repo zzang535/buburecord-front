@@ -9,8 +9,8 @@
   export default {
     data() {
       return {
-        clientId: process.env.VUE_APP_GCP_OAUTH_CLIENT_ID,
-        redirectUri: `${process.env.VUE_APP_SERVICE_URL}/test/`
+        clientId: this.$config.VUE_APP_GCP_OAUTH_CLIENT_ID,
+        redirectUri: `${this.$config.VUE_APP_SERVICE_URL}/test/`
       };
     },
     created() {
@@ -47,4 +47,4 @@
     width: 1000px;
     border: 1px solid red;
   }
-</style>
+</style>Ï
