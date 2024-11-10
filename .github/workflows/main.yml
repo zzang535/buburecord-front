@@ -7,30 +7,35 @@ on:
 jobs:
   run:
     runs-on: ubuntu-latest
-    
+
     env:
       VUE_APP_GCP_OAUTH_CLIENT_ID: ${{ secrets.VUE_APP_GCP_OAUTH_CLIENT_ID }}
       VUE_APP_SERVICE_URL: ${{ secrets.VUE_APP_SERVICE_URL }}
-      
       BACKEND_URL: ${{ secrets.BACKEND_URL }}
-      
+
     steps:
+      - name: Print environment variables
+        run: |
+          echo "VUE_APP_GCP_OAUTH_CLIENT_ID: $VUE_APP_GCP_OAUTH_CLIENT_ID"
+          echo "VUE_APP_SERVICE_URL: $VUE_APP_SERVICE_URL"
+          echo "BACKEND_URL: $BACKEND_URL"
+          
       - name: Checkout
         uses: actions/checkout@v3
 
       - name: Set up Node
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
-          cache: 'npm'
+          node-version: "18"
+          cache: "npm"
 
       - name: Install dependencies
         run: npm install
 
       - name: Build
         run: npm run build
-        
-      - name : AWS CLI set
+
+      - name: AWS CLI set
         run: |
           aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -43,5 +48,5 @@ jobs:
 
       - name: Invalidate CloudFront cache
         run: |
-            aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
+          aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
         shell: bash
