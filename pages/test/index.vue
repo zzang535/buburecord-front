@@ -4,8 +4,7 @@
     </div>
 </template>
 
-  
-  <script>
+<script>
   export default {
     data() {
       return {
@@ -18,7 +17,6 @@
         console.log('url', url);
     },
     methods: {
-
         getUrl() {
             const params = new URLSearchParams({
                 client_id: this.clientId,
@@ -30,7 +28,6 @@
             const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`;
             return authUrl;
         },  
-
         handleLogin() {
             const url = this.getUrl();
             console.log('url', url);
@@ -38,9 +35,9 @@
         }
     },
   };
-  </script>
+</script>
 
-  <style>
+<style>
   .top {
     margin-top: 100px;
     height: 100px;
