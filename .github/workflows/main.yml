@@ -12,11 +12,13 @@ jobs:
       VUE_APP_GCP_OAUTH_CLIENT_ID: ${{ secrets.VUE_APP_GCP_OAUTH_CLIENT_ID }}
       VUE_APP_SERVICE_URL: ${{ secrets.VUE_APP_SERVICE_URL }}
       BACKEND_URL: ${{ secrets.BACKEND_URL }}
+      TEST: ${{ vars.TEST }}
 
     steps:
       - name: Print environment variables
         run: |
           echo "TEST: $TEST"
+          echo TEST2: ${{ vars.TEST }}
           
       - name: Checkout
         uses: actions/checkout@v3
