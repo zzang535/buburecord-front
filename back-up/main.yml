@@ -9,15 +9,11 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      GCP_OAUTH_CLIENT_ID: ${{ vars.GCP_OAUTH_CLIENT_ID }}
-      SERVICE_URL: ${{ vars.SERVICE_URL }}
       API_URL: ${{ vars.API_URL }}
 
     steps:
       - name: Print environment variables
         run: |
-          echo GCP_OAUTH_CLIENT_ID: ${{ vars.GCP_OAUTH_CLIENT_ID }}
-          echo SERVICE_URL: ${{ vars.SERVICE_URL }}
           echo API_URL: ${{ vars.API_URL }}
           echo AWS_ACCESS_KEY_ID: ${{ vars.AWS_ACCESS_KEY_ID }}
           echo AWS_SECRET_ACCESS_KEY: ${{ vars.AWS_SECRET_ACCESS_KEY }}
@@ -51,7 +47,7 @@ jobs:
           aws s3 sync --include "*" --acl public-read --follow-symlinks --delete ./dist s3://${{ vars.AWS_S3_BUCKET }}
         shell: bash
 
-      # - name: Invalidate CloudFront cache
-      #   run: |
-      #     aws cloudfront create-invalidation --distribution-id ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
-      #   shell: bash
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation --distribution-id ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
+        shell: bash

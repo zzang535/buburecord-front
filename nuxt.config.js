@@ -42,8 +42,6 @@ export default {
 
 
   publicRuntimeConfig: {
-    GCP_OAUTH_CLIENT_ID: process.env.GCP_OAUTH_CLIENT_ID,
-    SERVICE_URL: process.env.SERVICE_URL,
   },
 
   // axios setting
