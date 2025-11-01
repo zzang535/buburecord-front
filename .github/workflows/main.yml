@@ -12,6 +12,7 @@ jobs:
       GCP_OAUTH_CLIENT_ID: ${{ vars.GCP_OAUTH_CLIENT_ID }}
       SERVICE_URL: ${{ vars.SERVICE_URL }}
       API_URL: ${{ vars.API_URL }}
+
     steps:
       - name: Print environment variables
         run: |
@@ -23,7 +24,7 @@ jobs:
           echo AWS_REGION: ${{ vars.AWS_REGION }}
           echo AWS_S3_BUCKET: ${{ vars.AWS_S3_BUCKET }}
           echo CLOUDFRONT_DISTRIBUTION_ID: ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}
-          
+
       - name: Checkout
         uses: actions/checkout@v3
 
@@ -50,7 +51,7 @@ jobs:
           aws s3 sync --include "*" --acl public-read --follow-symlinks --delete ./dist s3://${{ vars.AWS_S3_BUCKET }}
         shell: bash
 
-      - name: Invalidate CloudFront cache
-        run: |
-          aws cloudfront create-invalidation --distribution-id ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
-        shell: bash
+      # - name: Invalidate CloudFront cache
+      #   run: |
+      #     aws cloudfront create-invalidation --distribution-id ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
+      #   shell: bash
